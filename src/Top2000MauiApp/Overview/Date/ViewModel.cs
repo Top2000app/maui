@@ -31,7 +31,7 @@ public class ViewModel : ObservableBase
         set { this.SetPropertyValue(value); }
     }
 
-    public static DateTime LocalPlayDateAndTime(TrackListing listing) => listing.LocalPlayDateAndTime;
+    public static DateTime LocalPlayDateAndTime(TrackListing listing) => listing.PlayUtcDateAndTime.ToLocalTime();
 
     public async Task InitialiseViewModelAsync()
     {

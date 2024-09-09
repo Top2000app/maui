@@ -1,8 +1,8 @@
-﻿using Top2000MauiApp.Globalisation;
+﻿using System.Globalization;
+using Top2000.Data.ClientDatabase;
+using Top2000MauiApp.Globalisation;
 using Top2000MauiApp.NavigationShell;
 using Top2000MauiApp.Themes;
-using Top2000.Data.ClientDatabase;
-using System.Globalization;
 
 
 namespace Top2000MauiApp.XamarinForms
@@ -17,14 +17,14 @@ namespace Top2000MauiApp.XamarinForms
 
         public App()
         {
-            InitializeComponent();
-            SetCulture();
-            SetTheme();
+            this.InitializeComponent();
+            this.SetCulture();
+            this.SetTheme();
 
             var navigationShell = GetService<IMainShell>();
 
-            MainPage = navigationShell as Shell ??
-                throw new NotSupportedException($"{nameof(IMainShell)} must be implemented inside a Shell view");
+            this.MainPage = navigationShell as Shell
+                ?? throw new NotSupportedException($"{nameof(IMainShell)} must be implemented inside a Shell view");
 
             navigationShell.SetTitles();
         }
@@ -70,7 +70,7 @@ namespace Top2000MauiApp.XamarinForms
 
         protected override void OnStart()
         {
-          //  AppCenter.Start("89fbeb5b-5ec9-4456-86c7-214421330f73", typeof(Analytics), typeof(Crashes));
+            //  AppCenter.Start("89fbeb5b-5ec9-4456-86c7-214421330f73", typeof(Analytics), typeof(Crashes));
         }
 
         private void SetCulture()

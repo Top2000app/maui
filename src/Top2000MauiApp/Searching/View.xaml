@@ -8,7 +8,9 @@
              xmlns:res="clr-namespace:Top2000MauiApp.Globalisation"
              BackgroundColor="{DynamicResource PageBackgroundColor}">
     <Shell.SearchHandler >
-        <local:TracksSearchHandler Placeholder="{Binding [SearchTop2000], Source={x:Static res:Translator.Instance}}" 
+        <local:TracksSearchHandler Placeholder="{Binding [SearchTop2000], Source={x:Static res:Translator.Instance}}"
+                                   BackgroundColor="{DynamicResource PageBackgroundColor}"
+                                   PlaceholderColor="{DynamicResource ShellForegroundColor}"
                                    Keyboard="Plain">
             <local:TracksSearchHandler.QueryIcon>
                 <FontImageSource FontFamily="MaterialIcons" Glyph="{x:Static g:Symbols.Search}" Color="{DynamicResource Top2000Colour}" />
