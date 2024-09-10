@@ -139,7 +139,18 @@
                     <CollectionView.ItemTemplate>
                         <DataTemplate>
                             <StackLayout>
-                                <Label HorizontalTextAlignment="Start" VerticalTextAlignment="Center" Margin="0,10"
+                                <VisualStateManager.VisualStateGroups>
+                                    <VisualStateGroup Name="CommonStates">
+                                        <VisualState Name="Normal" />
+                                        <VisualState Name="Selected">
+                                            <VisualState.Setters>
+                                                <Setter Property="BackgroundColor" Value="LightGrey" />
+                                            </VisualState.Setters>
+                                        </VisualState>
+                                    </VisualStateGroup>
+                                </VisualStateManager.VisualStateGroups>
+
+                                <Label HorizontalTextAlignment="Center"  VerticalTextAlignment="Center" Margin="0,10"
                                        Text="{Binding Converter={StaticResource DateTimeToTimeOnlyString}}" Style="{StaticResource SmallLabelStyle}" />
                             </StackLayout>
                         </DataTemplate>
