@@ -92,16 +92,16 @@ namespace Top2000MauiApp.Overview.Date
 
         private async void OnGroupSelected(object sender, SelectionChangedEventArgs e)
         {
-            //if (dates.SelectedItem is DateTime date)
-            //{
-            //    Shell.SetTabBarIsVisible(this, true);
-            //    Shell.SetNavBarIsVisible(this, true);
-            //    await GroupFlyout.TranslateTo(this.Width * -1, 0);
-            //    GroupFlyout.IsVisible = false;
+            if (dates.SelectedItem is DateTime date)
+            {
+                Shell.SetTabBarIsVisible(this, true);
+                Shell.SetNavBarIsVisible(this, true);
+                await GroupFlyout.TranslateTo(this.Width * -1, 0);
+                GroupFlyout.IsVisible = false;
 
-            //    await this.JumpToSelectedDateTime(date);
-            //    dates.SelectedItem = null;
-            //}
+                await this.JumpToSelectedDateTime(date);
+                dates.SelectedItem = null;
+            }
         }
 
         private async Task JumpToSelectedDateTime(DateTime selectedDate)
