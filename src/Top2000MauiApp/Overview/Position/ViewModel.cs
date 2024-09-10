@@ -43,36 +43,6 @@ public class ViewModel : ObservableBase
         set { this.SetPropertyValue(value); }
     }
 
-    public string Position(TrackListing listing)
-    {
-        const int GroupSize = 100;
-
-        if (listing.Position < 100)
-        {
-            return "1 - 100";
-        }
-
-        if (this.CountOfItems > 2000 || this.CountOfItems == 500)
-        {
-            if (listing.Position >= 2400)
-            {
-                return "2400 - 2500";
-            }
-        }
-        else
-        {
-            if (listing.Position >= 1900)
-            {
-                return "1900 - 2000";
-            }
-        }
-
-        var min = listing.Position / GroupSize * GroupSize;
-        var max = min + GroupSize;
-
-        return $"{min} - {max}";
-    }
-
     public async Task InitialiseViewModelAsync()
     {
         var editions = await mediator.Send(new AllEditionsRequest());
@@ -92,7 +62,7 @@ public class ViewModel : ObservableBase
 
         var listings = await mediator.Send(new AllListingsOfEditionRequest { Year = this.SelectedEdition.Year });
         this.CountOfItems = listings.Count;
-        this.Listings.ClearAddRange(listings.GroupBy(this.Position));
+        this.Listings.ClearAddRange(listings.GroupByPosition());
 
         this.SelectedListing = null;
     }

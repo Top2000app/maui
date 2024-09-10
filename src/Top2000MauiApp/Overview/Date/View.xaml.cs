@@ -7,11 +7,11 @@ namespace Top2000MauiApp.Overview.Date
     {
         public View()
         {
-            BindingContext = App.GetService<ViewModel>();
-            InitializeComponent();
+            this.BindingContext = App.GetService<ViewModel>();
+            this.InitializeComponent();
         }
 
-        public ViewModel ViewModel => (ViewModel)BindingContext;
+        public ViewModel ViewModel => (ViewModel)this.BindingContext;
 
         private static int FirstVisibleItemIndex { get; set; }
 
@@ -31,20 +31,20 @@ namespace Top2000MauiApp.Overview.Date
 
         protected override bool OnBackButtonPressed()
         {
-            if (this.GroupFlyout.IsVisible)
+            if (GroupFlyout.IsVisible)
             {
                 Shell.SetTabBarIsVisible(this, true);
                 Shell.SetNavBarIsVisible(this, true);
-                this.GroupFlyout.TranslateTo(this.Width * -1, 0);
-                this.GroupFlyout.IsVisible = false;
+                GroupFlyout.TranslateTo(this.Width * -1, 0);
+                GroupFlyout.IsVisible = false;
 
                 return true;
             }
 
-            if (this.trackInformation.IsVisible)
+            if (trackInformation.IsVisible)
             {
 #pragma warning disable CS4014 // Because this call is not awaited, execution of the current method continues before the call is completed
-                CloseTrackInformationAsync();
+                this.CloseTrackInformationAsync();
 #pragma warning restore CS4014 // Because this call is not awaited, execution of the current method continues before the call is completed
                 return true;
             }
@@ -52,26 +52,26 @@ namespace Top2000MauiApp.Overview.Date
             return base.OnBackButtonPressed();
         }
 
-        async protected override void OnAppearing()
+        protected override async void OnAppearing()
         {
             base.OnAppearing();
-            if (ViewModel.Listings.Count == 0)
+            if (this.ViewModel.Listings.Count == 0)
             {
-                await ViewModel.InitialiseViewModelAsync();
+                await this.ViewModel.InitialiseViewModelAsync();
             }
 
-            await JumpWhenTop2000IsOn();
+            await this.JumpWhenTop2000IsOn();
         }
 
-        async private Task JumpWhenTop2000IsOn()
+        private async Task JumpWhenTop2000IsOn()
         {
-            var first = ViewModel.Listings.First().Key;
-            var last = ViewModel.Listings.Last().Key;
+            var first = this.ViewModel.Listings[0].Key;
+            var last = this.ViewModel.Listings[0].Key;
             var current = DateTime.Now;
 
             if (current > first && current < last)
             {
-                await JumpToSelectedDateTime(current);
+                await this.JumpToSelectedDateTime(current);
             }
             else
             {
@@ -79,7 +79,7 @@ namespace Top2000MauiApp.Overview.Date
             }
         }
 
-        async private void OnJumpGroupButtonClick(object sender, EventArgs e)
+        private async void OnJumpGroupButtonClick(object sender, EventArgs e)
         {
             Shell.SetNavBarIsVisible(this, false);
             Shell.SetTabBarIsVisible(this, false);
@@ -90,23 +90,23 @@ namespace Top2000MauiApp.Overview.Date
             await GroupFlyout.TranslateTo(0, 0);
         }
 
-        async private void OnGroupSelected(object sender, SelectionChangedEventArgs e)
+        private async void OnGroupSelected(object sender, SelectionChangedEventArgs e)
         {
             if (dates.SelectedItem is DateTime date)
             {
                 Shell.SetTabBarIsVisible(this, true);
                 Shell.SetNavBarIsVisible(this, true);
                 await GroupFlyout.TranslateTo(this.Width * -1, 0);
-                this.GroupFlyout.IsVisible = false;
+                GroupFlyout.IsVisible = false;
 
-                await JumpToSelectedDateTime(date);
+                await this.JumpToSelectedDateTime(date);
                 dates.SelectedItem = null;
             }
         }
 
         private async Task JumpToSelectedDateTime(DateTime selectedDate)
         {
-            var tracksGrouped = ViewModel.Listings;
+            var tracksGrouped = this.ViewModel.Listings;
             var groupsBefore = tracksGrouped.Where(x => x.Key <= selectedDate);
             var group = groupsBefore.LastOrDefault();
 
@@ -116,7 +116,7 @@ namespace Top2000MauiApp.Overview.Date
                 if (firstGroup != null)
                 {
                     var position = group.First().Position;
-                    var totalTracks = ViewModel.Listings.SelectMany(x => x).Count();
+                    var totalTracks = this.ViewModel.Listings.SelectMany(x => x).Count();
                     var groupsBeforeCount = groupsBefore.Count();
 
                     const int ShowGroup = 1;
@@ -128,9 +128,12 @@ namespace Top2000MauiApp.Overview.Date
                     }
 
 
-                    if (index < 0) index = 0;
+                    if (index < 0)
+                    {
+                        index = 0;
+                    }
 
-                    await ScrollToCorrectPositionAsync(index);
+                    await this.ScrollToCorrectPositionAsync(index);
                 }
             }
         }
@@ -140,16 +143,19 @@ namespace Top2000MauiApp.Overview.Date
             FirstVisibleItemIndex = e.FirstVisibleItemIndex;
         }
 
-        async private void OpenTodayClick(object sender, EventArgs e)
+        private async void OpenTodayClick(object sender, EventArgs e)
         {
-            await JumpToSelectedDateTime(DateTime.Now);
+            await this.JumpToSelectedDateTime(DateTime.Now);
         }
 
-        async private void OnListingSelected(object sender, SelectionChangedEventArgs e)
+        private async void OnListingSelected(object sender, SelectionChangedEventArgs e)
         {
-            if (ViewModel.SelectedListing is null) return;
+            if (this.ViewModel.SelectedListing is null || trackInformation.IsVisible)
+            {
+                return;
+            }
 
-            var infoTask = trackInformation.LoadTrackDetailsAsync(ViewModel.SelectedListing.TrackId, CloseTrackInformationAsync);
+            var infoTask = trackInformation.LoadTrackDetailsAsync(this.ViewModel.SelectedListing.TrackId, this.CloseTrackInformationAsync);
 
             Shell.SetNavBarIsVisible(this, false);
             Shell.SetTabBarIsVisible(this, false);
@@ -164,12 +170,12 @@ namespace Top2000MauiApp.Overview.Date
 
         private async Task CloseTrackInformationAsync()
         {
-            ViewModel.SelectedListing = null;
+            this.ViewModel.SelectedListing = null;
 
             Shell.SetTabBarIsVisible(this, true);
             Shell.SetNavBarIsVisible(this, true);
-            await this.trackInformation.TranslateTo(this.Width * -1, 0);
-            this.trackInformation.IsVisible = false;
+            await trackInformation.TranslateTo(this.Width * -1, 0);
+            trackInformation.IsVisible = false;
         }
     }
 }

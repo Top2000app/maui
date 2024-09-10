@@ -1,6 +1,6 @@
-﻿using Top2000MauiApp.Globalisation;
+﻿using Top2000.Features.Searching;
+using Top2000MauiApp.Globalisation;
 using Top2000MauiApp.XamarinForms;
-using Top2000.Features.Searching;
 
 
 namespace Top2000MauiApp.Searching
@@ -10,44 +10,44 @@ namespace Top2000MauiApp.Searching
     {
         public View()
         {
-            BindingContext = App.GetService<ViewModel>();
-            InitializeComponent();
+            this.BindingContext = App.GetService<ViewModel>();
+            this.InitializeComponent();
         }
 
-        public ViewModel ViewModel => (ViewModel)BindingContext;
+        public ViewModel ViewModel => (ViewModel)this.BindingContext;
 
         public string GetNameForGroup(IGroup group)
         {
-            return GetNameForGroupOrSortBy(group)
+            return this.GetNameForGroupOrSortBy(group)
                 ?? throw new NotImplementedException($"Group '{group.GetType()}' was not defined yet.");
         }
 
         public string GetNameForSort(ISort sort)
         {
-            return GetNameForGroupOrSortBy(sort)
+            return this.GetNameForGroupOrSortBy(sort)
                 ?? throw new NotImplementedException($"Display text for sort option '{sort.GetType()}' was not defined.");
         }
 
         protected override void OnAppearing()
         {
             base.OnAppearing();
-            ViewModel.OnActivate(this);
+            this.ViewModel.OnActivate(this);
 
-            if (string.IsNullOrWhiteSpace(ViewModel.QueryText))
+            if (string.IsNullOrWhiteSpace(this.ViewModel.QueryText))
             {
-                ViewModel.IsFlat = ViewModel.GroupBy.Value is GroupByNothing;
+                this.ViewModel.IsFlat = this.ViewModel.GroupBy.Value is GroupByNothing;
             }
 
             GroupSortLayout.IsVisible = false;
-            SetTitlesForButton();
+            this.SetTitlesForButton();
         }
 
         protected override bool OnBackButtonPressed()
         {
-            if (this.trackInformation.IsVisible)
+            if (trackInformation.IsVisible)
             {
 #pragma warning disable CS4014 // Because this call is not awaited, execution of the current method continues before the call is completed
-                CloseTrackInformationAsync();
+                this.CloseTrackInformationAsync();
 #pragma warning restore CS4014 // Because this call is not awaited, execution of the current method continues before the call is completed
                 return true;
             }
@@ -69,11 +69,14 @@ namespace Top2000MauiApp.Searching
             };
         }
 
-        async private void OnListingSelected(object sender, SelectionChangedEventArgs e)
+        private async void OnListingSelected(object sender, SelectionChangedEventArgs e)
         {
-            if (ViewModel.SelectedTrack is null) return;
+            if (this.ViewModel.SelectedTrack is null || trackInformation.IsVisible)
+            {
+                return;
+            }
 
-            var infoTask = trackInformation.LoadTrackDetailsAsync(ViewModel.SelectedTrack.Id, CloseTrackInformationAsync);
+            var infoTask = trackInformation.LoadTrackDetailsAsync(this.ViewModel.SelectedTrack.Id, this.CloseTrackInformationAsync);
 
             Shell.SetNavBarIsVisible(this, false);
             Shell.SetTabBarIsVisible(this, false);
@@ -88,56 +91,56 @@ namespace Top2000MauiApp.Searching
 
         private async Task CloseTrackInformationAsync()
         {
-            ViewModel.SelectedTrack = null;
+            this.ViewModel.SelectedTrack = null;
 
             Shell.SetTabBarIsVisible(this, true);
             Shell.SetNavBarIsVisible(this, true);
-            await this.trackInformation.TranslateTo(this.Width * -1, 0);
-            this.trackInformation.IsVisible = false;
+            await trackInformation.TranslateTo(this.Width * -1, 0);
+            trackInformation.IsVisible = false;
         }
 
-        async private void OnGroupByButtonClick(object sender, System.EventArgs e)
+        private async void OnGroupByButtonClick(object sender, System.EventArgs e)
         {
-            var groups = ViewModel.GroupByOptions.Select(x => x.Name).ToArray();
+            var groups = this.ViewModel.GroupByOptions.Select(x => x.Name).ToArray();
 
-            string toGroup = await DisplayActionSheet(AppResources.GroupByHeader, AppResources.Cancel, null, groups);
+            string toGroup = await this.DisplayActionSheet(AppResources.GroupByHeader, AppResources.Cancel, null, groups);
 
             if (!string.IsNullOrEmpty(toGroup) && toGroup != AppResources.Cancel)
             {
                 GroupByButton.Text = $"{Translator.Instance["GroupByHeader"]} {toGroup}";
 
-                var groupBy = ViewModel.GroupByOptions.SingleOrDefault(x => x.Name == toGroup);
+                var groupBy = this.ViewModel.GroupByOptions.SingleOrDefault(x => x.Name == toGroup);
                 if (groupBy != null)
                 {
-                    ViewModel.GroupBy = groupBy;
-                    ViewModel.ReSortGroup();
+                    this.ViewModel.GroupBy = groupBy;
+                    this.ViewModel.ReSortGroup();
                 }
             }
         }
 
-        async private void OnSortByButtonClick(object sender, System.EventArgs e)
+        private async void OnSortByButtonClick(object sender, System.EventArgs e)
         {
-            var sortings = ViewModel.SortByOptions.Select(x => x.Name).ToArray();
+            var sortings = this.ViewModel.SortByOptions.Select(x => x.Name).ToArray();
 
-            string toSort = await DisplayActionSheet(AppResources.SortByHeader, AppResources.Cancel, null, sortings);
+            string toSort = await this.DisplayActionSheet(AppResources.SortByHeader, AppResources.Cancel, null, sortings);
 
             if (!string.IsNullOrEmpty(toSort) && toSort != AppResources.Cancel)
             {
                 SortByButton.Text = $"{Translator.Instance["SortByHeader"]} {toSort}";
 
-                var sortBy = ViewModel.SortByOptions.SingleOrDefault(x => x.Name == toSort);
+                var sortBy = this.ViewModel.SortByOptions.SingleOrDefault(x => x.Name == toSort);
                 if (sortBy != null)
                 {
-                    ViewModel.SortBy = sortBy;
-                    ViewModel.ReSortGroup();
+                    this.ViewModel.SortBy = sortBy;
+                    this.ViewModel.ReSortGroup();
                 }
             }
         }
 
         private void SetTitlesForButton()
         {
-            GroupByButton.Text = $"{Translator.Instance["GroupByHeader"]} {ViewModel.GroupBy.Name}";
-            SortByButton.Text = $"{Translator.Instance["SortByHeader"]} {ViewModel.SortBy.Name}";
+            GroupByButton.Text = $"{Translator.Instance["GroupByHeader"]} {this.ViewModel.GroupBy.Name}";
+            SortByButton.Text = $"{Translator.Instance["SortByHeader"]} {this.ViewModel.SortBy.Name}";
         }
 
         private void ShowSortGroupLayout(object sender, EventArgs e)
