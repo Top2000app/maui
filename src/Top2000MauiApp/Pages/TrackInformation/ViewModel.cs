@@ -1,9 +1,12 @@
-﻿using Top2000.Features.TrackInformation;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
+using Top2000.Features.TrackInformation;
 using Top2000MauiApp.Common;
+using Top2000MauiApp.Themes;
+using Top2000MauiApp.XamarinForms;
 
 namespace Top2000MauiApp.Pages.TrackInformation;
 
-public class ViewModel : ObservableBase
+public partial class ViewModel : ObservableObject
 {
     private readonly IMediator mediator;
 
@@ -13,85 +16,56 @@ public class ViewModel : ObservableBase
         this.Listings = [];
     }
 
-    public string Title
-    {
-        get { return this.GetPropertyValue<string>(); }
-        set { this.SetPropertyValue(value); }
-    }
+    [ObservableProperty]
+    public string title;
 
-    public string Artist
-    {
-        get { return this.GetPropertyValue<string>(); }
-        set { this.SetPropertyValue(value); }
-    }
+    [ObservableProperty]
+    public string artist;
 
-    public string ArtistWithYear
-    {
-        get { return this.GetPropertyValue<string>(); }
-        set { this.SetPropertyValue(value); }
-    }
+    [ObservableProperty]
+    public string artistWithYear;
 
-    public ObservableList<ListingInformation> Listings { get; }
+    public ObservableList<ListingInformationViewModel> Listings { get; }
 
-    public int TotalListings
-    {
-        get { return this.GetPropertyValue<int>(); }
-        set { this.SetPropertyValue(value); }
-    }
+    [ObservableProperty]
+    public int totalListings;
 
-    public ListingInformation Highest
-    {
-        get { return this.GetPropertyValue<ListingInformation>(); }
-        set { this.SetPropertyValue(value); }
-    }
+    [ObservableProperty]
+    public ListingInformation highest;
 
-    public ListingInformation Lowest
-    {
-        get { return this.GetPropertyValue<ListingInformation>(); }
-        set { this.SetPropertyValue(value); }
-    }
+    [ObservableProperty]
+    public ListingInformation lowest;
 
-    public ListingInformation Latest
-    {
-        get { return this.GetPropertyValue<ListingInformation>(); }
-        set { this.SetPropertyValue(value); }
-    }
 
-    public ListingInformation First
-    {
-        get { return this.GetPropertyValue<ListingInformation>(); }
-        set { this.SetPropertyValue(value); }
-    }
+    [ObservableProperty]
+    public ListingInformation latest;
 
-    public int Appearances
-    {
-        get { return this.GetPropertyValue<int>(); }
-        set { this.SetPropertyValue(value); }
-    }
 
-    public bool IsLatestListed
-    {
-        get { return this.GetPropertyValue<bool>(); }
-        set { this.SetPropertyValue(value); }
-    }
+    [ObservableProperty]
+    public ListingInformation first;
 
-    public int AppearancesPossible
-    {
-        get { return this.GetPropertyValue<int>(); }
-        set { this.SetPropertyValue(value); }
-    }
 
-    public int AppearancesPossiblePercentage
-    {
-        get { return this.GetPropertyValue<int>(); }
-        set { this.SetPropertyValue(value); }
-    }
+    [ObservableProperty]
+    public int appearances;
 
-    public int TotalTop2000Percentage
-    {
-        get { return this.GetPropertyValue<int>(); }
-        set { this.SetPropertyValue(value); }
-    }
+
+    [ObservableProperty]
+    public bool isLatestListed;
+
+
+    [ObservableProperty]
+    public int appearancesPossible;
+
+
+    [ObservableProperty]
+    public int appearancesPossiblePercentage;
+
+
+    [ObservableProperty]
+    public int totalTop2000Percentage;
+
+    [ObservableProperty]
+    public string localUtcDateAndTime;
 
     public async Task LoadTrackDetailsAsync(int trackId)
     {
@@ -108,10 +82,78 @@ public class ViewModel : ObservableBase
         this.AppearancesPossible = track.AppearancesPossible;
         this.IsLatestListed = track.Listings.First().Status != ListingStatus.NotListed;
         this.Listings.Clear();
-        this.Listings.ClearAddRange(track.Listings);
+
+
+        var listings = track.Listings
+            .Select(x => new ListingInformationViewModel()
+            {
+                Edition = x.Edition,
+                StatusSymbol = ToStatusSymbol(x.Status),
+                TextColour = Convert(x.Status),
+                Offset = ConvertToOffset(x.Offset),
+                Position = ConvertPosition(x.Position),
+            })
+            .ToList();
+
+        this.Listings.ClearAddRange(listings);
+
         this.AppearancesPossiblePercentage = 100 * this.Appearances / this.AppearancesPossible;
         this.TotalTop2000Percentage = 100 * this.Appearances / this.Listings.Count;
 
         this.TotalListings = this.Listings.Count;
+        this.LocalUtcDateAndTime = ConvertToLocalTime(track.Latest.PlayUtcDateAndTime);
+    }
+
+    public static string ConvertPosition(int? value)
+    {
+        return value.HasValue
+           ? value.Value.ToString(App.NumberFormatProvider)
+           : "-";
+    }
+
+    public static Color Convert(ListingStatus value) => value switch
+    {
+        ListingStatus.New => Colours.YellowColour,
+        ListingStatus.Back => Colours.YellowColour,
+        ListingStatus.Decreased => Colours.RedColour,
+        ListingStatus.Increased => Colours.GreenColour,
+        _ => Colours.GreyColour,
+    };
+
+    public static string ToStatusSymbol(ListingStatus value) => value switch
+    {
+        ListingStatus.New => Symbols.Flag,
+        ListingStatus.Decreased => Symbols.Down,
+        ListingStatus.Increased => Symbols.Up,
+        ListingStatus.Unchanged => Symbols.Same,
+        ListingStatus.Back => Symbols.BackInList,
+        _ => Symbols.Minus
+    };
+
+    public static string ConvertToOffset(int? offset)
+    {
+        return offset.HasValue && offset.Value != 0
+           ? Math.Abs(offset.Value).ToString(App.NumberFormatProvider)
+           : string.Empty;
+    }
+
+    public static string ConvertToLocalTime(DateTime? value)
+    {
+        if (value is null)
+        {
+            return string.Empty;
+        }
+
+        var hour = value.Value.TimeOfDay.Hours;
+        var untilHour = hour + 1;
+
+        if (untilHour > 24)
+        {
+            untilHour = 0;
+        }
+
+        var date = value.Value.ToString("dddd d MMMM yyyy", App.DateTimeFormatProvider);
+
+        return $"{date} {hour}:00 - {untilHour}:00";
     }
 }

@@ -1,4 +1,5 @@
-﻿using Top2000.Data.ClientDatabase;
+﻿using Microsoft.Extensions.Logging;
+using Top2000.Data.ClientDatabase;
 using Top2000.Features.SQLite;
 using Top2000MauiApp.Globalisation;
 using Top2000MauiApp.Pages.NavigationShell;
