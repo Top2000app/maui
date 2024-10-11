@@ -37,7 +37,7 @@
         <ToolbarItem Clicked="OnJumpGroupButtonClick">
             <ToolbarItem.IconImageSource>
                 <FontImageSource Glyph="{x:Static g:Symbols.FilterList}" Color="White"
-                                 FontFamily="{OnPlatform Android=MaterialIcons.ttf#}" />
+                                 FontFamily="{OnPlatform Android=MaterialIcons#}" />
             </ToolbarItem.IconImageSource>
         </ToolbarItem>
     </ContentPage.ToolbarItems>
@@ -45,7 +45,7 @@
     <Shell.TitleView>
         <StackLayout HorizontalOptions="FillAndExpand" Orientation="Horizontal">
 
-            <Label Text="{x:Static g:Symbols.Menu}" FontFamily="{OnPlatform Android=MaterialIcons.ttf#}" FontSize="25"
+            <Label Text="{x:Static g:Symbols.Menu}" FontFamily="{OnPlatform Android=MaterialIcons#}" FontSize="25"
                    TextColor="White"
                    VerticalOptions="Center" />
 
@@ -93,7 +93,7 @@
 
                                     <Label Style="{StaticResource SmallLabelStyle}"
                                     FontSize="{Binding Converter={StaticResource TrackListingSymbolFontSizeConverter}}"
-                                   FontFamily="{OnPlatform Android=MaterialIcons.ttf#}"
+                                   FontFamily="{OnPlatform Android=MaterialIcons#}"
                                    Text="{Binding Converter={StaticResource DeltaToSymbolConverter}}"
                                    TextColor="{Binding Converter={StaticResource DeltaToSymbolColour}}" />
                                 </Grid>
@@ -139,7 +139,7 @@
                         <ImageButton Clicked="OnCloseButtonClick" BackgroundColor="Transparent">
                             <ImageButton.Source>
                                 <FontImageSource Glyph="{x:Static g:Symbols.Back}"
-                                     FontFamily="{OnPlatform Android=MaterialIcons.ttf#}" />
+                                     FontFamily="{OnPlatform Android=MaterialIcons#}" />
                             </ImageButton.Source>
                         </ImageButton>
                         <Label Margin="5,0,0,0" Text="{Binding [SelectEdition], Source={x:Static res:Translator.Instance}}" TextColor="White" FontSize="18" VerticalTextAlignment="Center" VerticalOptions="Center" />

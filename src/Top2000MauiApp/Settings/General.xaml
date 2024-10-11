@@ -24,7 +24,7 @@
             <Label Text="{Binding [LanguageHeader], Source={x:Static res:Translator.Instance}}" Style="{StaticResource SmallLabelStyle}" FontAttributes="Bold" />
 
             <StackLayout Orientation="Horizontal"  >
-                <Label x:Name="nl" Text="{x:Static g:Symbols.FilterList}" FontFamily="{OnPlatform Android=MaterialIcons.ttf#}"
+                <Label x:Name="nl" Text="{x:Static g:Symbols.FilterList}" FontFamily="{OnPlatform Android=MaterialIcons#}"
                        FontSize="16" VerticalOptions="Center" Style="{StaticResource SmallLabelStyle}" Margin="0,5,5,5" />
                 <Image Source="Netherlands.png"  VerticalOptions="Center" Margin="0,5,5,5"  />
                 <Label Style="{StaticResource SmallLabelStyle}" Text="Nederlands (Nederland)" VerticalOptions="Center"  Margin="0,5,5,5" />
@@ -35,7 +35,7 @@
             </StackLayout>
 
             <StackLayout Orientation="Horizontal" >
-                <Label x:Name="en" Text="{x:Static g:Symbols.FilterList}" Margin="0,5,5,5"  FontFamily="{OnPlatform Android=MaterialIcons.ttf#}" FontSize="16" VerticalOptions="Center" Style="{StaticResource SmallLabelStyle}" />
+                <Label x:Name="en" Text="{x:Static g:Symbols.FilterList}" Margin="0,5,5,5"  FontFamily="{OnPlatform Android=MaterialIcons#}" FontSize="16" VerticalOptions="Center" Style="{StaticResource SmallLabelStyle}" />
                 <Image Source="UnitedKingdom.png" VerticalOptions="Center" Margin="0,5,5,5" />
                 <Label Style="{StaticResource SmallLabelStyle}" Text="English (United Kingdom)" VerticalOptions="Center" Margin="0,5,5,5"  />
 
@@ -45,7 +45,7 @@
             </StackLayout>
 
             <StackLayout Orientation="Horizontal"  >
-                <Label x:Name="fr" Text="{x:Static g:Symbols.FilterList}" Margin="0,5,5,5"  FontFamily="{OnPlatform Android=MaterialIcons.ttf#}" FontSize="16" VerticalOptions="Center" Style="{StaticResource SmallLabelStyle}" />
+                <Label x:Name="fr" Text="{x:Static g:Symbols.FilterList}" Margin="0,5,5,5"  FontFamily="{OnPlatform Android=MaterialIcons#}" FontSize="16" VerticalOptions="Center" Style="{StaticResource SmallLabelStyle}" />
                 <Image Source="France.png" VerticalOptions="Center" Margin="0,5,5,5"  />
                 <Label Style="{StaticResource SmallLabelStyle}" Text="Français (France)" VerticalOptions="Center" Margin="0,5,5,5"  />
 

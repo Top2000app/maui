@@ -9,7 +9,7 @@ public class DeltaToSymbolConverter : ValueConverterBase<TrackListing, string>
     {
         var value = track.Delta;
 
-        if (value is null || !value.HasValue)
+        if (value is null)
         {
             if (track.IsRecurring)
             {

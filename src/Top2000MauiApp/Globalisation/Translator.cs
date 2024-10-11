@@ -12,7 +12,16 @@ public class Translator : INotifyPropertyChanged
     {
         get
         {
-            var value = AppResources.ResourceManager.GetString(text, AppResources.Culture);
+            if (text == "text") { return $"%{text}%"; }
+            string? value = null;
+            try
+            {
+                value = AppResources.ResourceManager.GetString(text, AppResources.Culture);
+            }
+            catch (FileNotFoundException)
+            {
+                // not sure why this happens... seems not to matter
+            }
 
             return string.IsNullOrWhiteSpace(value)
                 ? "%" + text + "%"

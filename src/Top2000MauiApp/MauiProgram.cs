@@ -1,7 +1,6 @@
 ﻿using Microsoft.Extensions.Logging;
 using Top2000.Data.ClientDatabase;
 using Top2000.Features.SQLite;
-using Top2000MauiApp.AskForReview;
 using Top2000MauiApp.Globalisation;
 using Top2000MauiApp.NavigationShell;
 using Top2000MauiApp.Themes;
@@ -37,7 +36,7 @@ public static class MauiProgram
             .AddTransient<Top2000MauiApp.Overview.Date.ViewModel>()
             .AddTransient<Top2000MauiApp.TrackInformation.ViewModel>()
             .AddTransient<Top2000MauiApp.Searching.ViewModel>()
-            .AddTransient<IAskForReview, ReviewModule>()
+            // .AddTransient<IAskForReview, ReviewModule>()
             // .AddSingleton<Xamarin.Essentials.Interfaces.IPreferences, Xamarin.Essentials.Implementation.PreferencesImplementation>()
             .AddSingleton<ICulture>(new SupportedCulture("nl"))
             .AddSingleton<ICulture>(new SupportedCulture("en"))

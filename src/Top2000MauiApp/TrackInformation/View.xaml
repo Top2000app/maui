@@ -33,7 +33,7 @@
             <ImageButton Clicked="OnCloseButtonClick" BackgroundColor="Transparent">
                 <ImageButton.Source>
                     <FontImageSource Glyph="{x:Static g:Symbols.Back}"
-                                     FontFamily="{OnPlatform Android=MaterialIcons.ttf#}" />
+                                     FontFamily="{OnPlatform Android=MaterialIcons}" />
                 </ImageButton.Source>
             </ImageButton>
         </StackLayout>
@@ -42,7 +42,7 @@
             <ImageButton Clicked="OnViewVideoClick" BackgroundColor="Transparent">
                 <ImageButton.Source>
                     <FontImageSource Glyph="{x:Static g:Symbols.Video}"
-                                     FontFamily="{OnPlatform Android=MaterialIcons.ttf#}" />
+                                     FontFamily="{OnPlatform Android=MaterialIcons#}" />
                 </ImageButton.Source>
             </ImageButton>
         </StackLayout>
@@ -79,7 +79,7 @@
                                     <Label Text="{Binding Status, Converter={StaticResource StatusToSymbolConverter}}"
                                                TextColor="{Binding Status, Converter={StaticResource StatusToColourConverter}}"
                                                Style="{StaticResource MediumLabelStyle}"
-                                               FontFamily="{OnPlatform Android=MaterialIcons.ttf#}"
+                                               FontFamily="{OnPlatform Android=MaterialIcons}"
                                                HorizontalOptions="Start" />
 
                                     <Label Text="{Binding Offset, Converter={StaticResource OffsetToStringConverter}}"

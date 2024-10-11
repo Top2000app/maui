@@ -11,13 +11,13 @@ namespace Top2000MauiApp.NavigationShell
         {
             InitializeComponent();
 
-#pragma warning disable 4014
-            Task.Run(async () =>
-            {
-                await Task.Delay(5 * 1000);
-                CheckForReviewAsync();
-            }).ConfigureAwait(false);
-#pragma warning restore 4014
+            //#pragma warning disable 4014
+            //            Task.Run(async () =>
+            //            {
+            //                await Task.Delay(5 * 1000);
+            //                CheckForReviewAsync();
+            //            }).ConfigureAwait(false);
+            //#pragma warning restore 4014
         }
 
         public bool IsViewForWhenTop2000IsLive => false;
