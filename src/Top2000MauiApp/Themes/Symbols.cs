@@ -1,4 +1,4 @@
-﻿namespace Top2000MauiApp.Common;
+﻿namespace Top2000MauiApp.Themes;
 
 public static class Symbols
 {
