@@ -1,7 +1,4 @@
-﻿
-
-
-namespace Top2000MauiApp.Themes
+﻿namespace Top2000MauiApp.Themes
 {
     public interface IThemeService
     {

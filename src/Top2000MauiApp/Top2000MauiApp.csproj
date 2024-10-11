@@ -82,31 +82,31 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <MauiXaml Update="NavigationShell\LiveTop2000\View.xaml">
+	  <MauiXaml Update="Pages\NavigationShell\LiveTop2000\View.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="NavigationShell\View.xaml">
+	  <MauiXaml Update="Pages\NavigationShell\View.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Overview\Date\View.xaml">
+	  <MauiXaml Update="Pages\Overview\Date\View.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Overview\Position\View.xaml">
+	  <MauiXaml Update="Pages\Overview\Position\View.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Searching\View.xaml">
+	  <MauiXaml Update="Pages\Searching\View.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Settings\About.xaml">
+	  <MauiXaml Update="Pages\Settings\About.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Settings\General.xaml">
+	  <MauiXaml Update="Pages\Settings\General.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Settings\Privacy.xaml">
+	  <MauiXaml Update="Pages\Settings\Privacy.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Settings\ThirdParty.xaml">
+	  <MauiXaml Update="Pages\Settings\ThirdParty.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Themes\Dark.xaml">
@@ -115,10 +115,10 @@
 	  <MauiXaml Update="Themes\Light.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="TrackInformation\Controls\CircularProgressBar.xaml">
+	  <MauiXaml Update="Pages\TrackInformation\Controls\CircularProgressBar.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="TrackInformation\View.xaml">
+	  <MauiXaml Update="Pages\TrackInformation\View.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	</ItemGroup>

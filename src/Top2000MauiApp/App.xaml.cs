@@ -1,88 +1,87 @@
 ﻿using System.Globalization;
 using Top2000.Data.ClientDatabase;
 using Top2000MauiApp.Globalisation;
-using Top2000MauiApp.NavigationShell;
+using Top2000MauiApp.Pages.NavigationShell;
 using Top2000MauiApp.Themes;
 
 
-namespace Top2000MauiApp.XamarinForms
+namespace Top2000MauiApp.XamarinForms;
+
+public partial class App : Application
 {
-    public partial class App : Application
+    public static readonly IFormatProvider DateTimeFormatProvider = DateTimeFormatInfo.InvariantInfo;
+
+    public static readonly IFormatProvider NumberFormatProvider = NumberFormatInfo.InvariantInfo;
+
+    private static IServiceProvider? serviceProvider;
+
+    public App()
     {
-        public static readonly IFormatProvider DateTimeFormatProvider = DateTimeFormatInfo.InvariantInfo;
+        this.InitializeComponent();
+        this.SetCulture();
+        this.SetTheme();
 
-        public static readonly IFormatProvider NumberFormatProvider = NumberFormatInfo.InvariantInfo;
+        var navigationShell = GetService<IMainShell>();
 
-        private static IServiceProvider? serviceProvider;
+        this.MainPage = navigationShell as Shell
+            ?? throw new NotSupportedException($"{nameof(IMainShell)} must be implemented inside a Shell view");
 
-        public App()
+        navigationShell.SetTitles();
+    }
+
+    public static IServiceProvider ServiceProvider
+    {
+        get
         {
-            this.InitializeComponent();
-            this.SetCulture();
-            this.SetTheme();
-
-            var navigationShell = GetService<IMainShell>();
-
-            this.MainPage = navigationShell as Shell
-                ?? throw new NotSupportedException($"{nameof(IMainShell)} must be implemented inside a Shell view");
-
-            navigationShell.SetTitles();
+            return serviceProvider ??
+                throw new InvalidOperationException("Application isn't booted yet");
         }
-
-        public static IServiceProvider ServiceProvider
+        set
         {
-            get
-            {
-                return serviceProvider ??
-                    throw new InvalidOperationException("Application isn't booted yet");
-            }
-            set
-            {
-                serviceProvider = value;
-            }
+            serviceProvider = value;
         }
+    }
 
-        public static T GetService<T>() where T : notnull => ServiceProvider.GetRequiredService<T>();
+    public static T GetService<T>() where T : notnull => ServiceProvider.GetRequiredService<T>();
 
-        public static Task EnsureDatabaseIsCreatedAsync()
+    public static Task EnsureDatabaseIsCreatedAsync()
+    {
+        var databaseGen = GetService<IUpdateClientDatabase>();
+        var top2000 = GetService<Top2000AssemblyDataSource>();
+
+        return databaseGen.RunAsync(top2000);
+    }
+
+    public static async Task CheckForOnlineUpdates()
+    {
+        try
         {
-            var databaseGen = GetService<IUpdateClientDatabase>();
-            var top2000 = GetService<Top2000AssemblyDataSource>();
+            await Task.Delay(3_1000);
+            var databasGen = GetService<IUpdateClientDatabase>();
+            var onlineStore = GetService<OnlineDataSource>();
 
-            return databaseGen.RunAsync(top2000);
+            await databasGen.RunAsync(onlineStore);
         }
-
-        public static async Task CheckForOnlineUpdates()
+        catch
         {
-            try
-            {
-                await Task.Delay(3_1000);
-                var databasGen = GetService<IUpdateClientDatabase>();
-                var onlineStore = GetService<OnlineDataSource>();
-
-                await databasGen.RunAsync(onlineStore);
-            }
-            catch
-            {
-                // I don't want a crash here, just continue. 
-            }
+            // I don't want a crash here, just continue. 
         }
+    }
 
-        protected override void OnStart()
-        {
-            //  AppCenter.Start("89fbeb5b-5ec9-4456-86c7-214421330f73", typeof(Analytics), typeof(Crashes));
-        }
+    protected override void OnStart()
+    {
+        //  AppCenter.Start("89fbeb5b-5ec9-4456-86c7-214421330f73", typeof(Analytics), typeof(Crashes));
+    }
 
-        private void SetCulture()
-        {
-            var localisationService = App.GetService<ILocalisationService>();
-            localisationService.SetCultureFromSetting();
-        }
+    private void SetCulture()
+    {
+        var localisationService = App.GetService<ILocalisationService>();
+        localisationService.SetCultureFromSetting();
+    }
 
-        private void SetTheme()
-        {
-            var themeService = GetService<IThemeService>();
-            themeService.SetThemeFromSetting();
-        }
+    private void SetTheme()
+    {
+        var themeService = GetService<IThemeService>();
+        themeService.SetThemeFromSetting();
     }
 }

@@ -1,8 +1,7 @@
-﻿using Microsoft.Extensions.Logging;
-using Top2000.Data.ClientDatabase;
+﻿using Top2000.Data.ClientDatabase;
 using Top2000.Features.SQLite;
 using Top2000MauiApp.Globalisation;
-using Top2000MauiApp.NavigationShell;
+using Top2000MauiApp.Pages.NavigationShell;
 using Top2000MauiApp.Themes;
 
 namespace Top2000MauiApp;
@@ -32,10 +31,10 @@ public static class MauiProgram
             .AddClientDatabase(new DirectoryInfo(FileSystem.Current.AppDataDirectory))
             .AddFeaturesWithSQLite()
             .AddSingleton<IThemeService, ThemeService>()
-            .AddTransient<Top2000MauiApp.Overview.Position.ViewModel>()
-            .AddTransient<Top2000MauiApp.Overview.Date.ViewModel>()
-            .AddTransient<Top2000MauiApp.TrackInformation.ViewModel>()
-            .AddTransient<Top2000MauiApp.Searching.ViewModel>()
+            .AddTransient<Pages.Overview.Position.ViewModel>()
+            .AddTransient<Pages.Overview.Date.ViewModel>()
+            .AddTransient<Pages.TrackInformation.ViewModel>()
+            .AddTransient<Pages.Searching.ViewModel>()
             // .AddTransient<IAskForReview, ReviewModule>()
             // .AddSingleton<Xamarin.Essentials.Interfaces.IPreferences, Xamarin.Essentials.Implementation.PreferencesImplementation>()
             .AddSingleton<ICulture>(new SupportedCulture("nl"))
@@ -45,11 +44,11 @@ public static class MauiProgram
 
         if (IsTop2000Live())
         {
-            builder.Services.AddSingleton<IMainShell, Top2000MauiApp.NavigationShell.LiveTop2000.View>();
+            builder.Services.AddSingleton<IMainShell, Top2000MauiApp.Pages.NavigationShell.LiveTop2000.View>();
         }
         else
         {
-            builder.Services.AddSingleton<IMainShell, Top2000MauiApp.NavigationShell.View>();
+            builder.Services.AddSingleton<IMainShell, Top2000MauiApp.Pages.NavigationShell.View>();
         }
 
         // builder.Services.Configure<AskForReviewConfiguration>(builder.Configuration.GetSection(nameof(AskForReviewConfiguration)));
