@@ -4,7 +4,7 @@ using Top2000MauiApp.Common;
 
 namespace Top2000MauiApp.Pages.Overview.Position;
 
-public class ViewModel : ObservableBase
+public partial class ViewModel : ObservableObject
 {
     private readonly IMediator mediator;
 
@@ -17,31 +17,19 @@ public class ViewModel : ObservableBase
 
     public ObservableGroupedList<string, TrackListing> Listings { get; }
 
-    public TrackListing? SelectedListing
-    {
-        get { return this.GetPropertyValue<TrackListing?>(); }
-        set { this.SetPropertyValue(value); }
-    }
+    [ObservableProperty]
+    public TrackListing? selectedListing;
 
     public ObservableList<Edition> Editions { get; }
 
-    public Edition? SelectedEdition
-    {
-        get { return this.GetPropertyValue<Edition?>(); }
-        set { this.SetPropertyValue(value); }
-    }
+    [ObservableProperty]
+    public Edition? selectedEdition;
 
-    public int SelectedEditionYear
-    {
-        get { return this.GetPropertyValue<int>(); }
-        set { this.SetPropertyValue(value); }
-    }
+    [ObservableProperty]
+    public int selectedEditionYear;
 
-    public int CountOfItems
-    {
-        get { return this.GetPropertyValue<int>(); }
-        set { this.SetPropertyValue(value); }
-    }
+    [ObservableProperty]
+    public int countOfItems;
 
     public async Task InitialiseViewModelAsync()
     {

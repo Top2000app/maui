@@ -4,7 +4,7 @@ using Top2000MauiApp.Common;
 
 namespace Top2000MauiApp.Pages.Overview.Date;
 
-public class ViewModel : ObservableBase
+public partial class ViewModel : ObservableObject
 {
     private readonly IMediator mediator;
 
@@ -19,17 +19,11 @@ public class ViewModel : ObservableBase
 
     public ObservableGroupedList<DateTime, DateTime> Dates { get; }
 
-    public int SelectedEditionYear
-    {
-        get { return this.GetPropertyValue<int>(); }
-        set { this.SetPropertyValue(value); }
-    }
+    [ObservableProperty]
+    public int selectedEditionYear;
 
-    public TrackListing? SelectedListing
-    {
-        get { return this.GetPropertyValue<TrackListing?>(); }
-        set { this.SetPropertyValue(value); }
-    }
+    [ObservableProperty]
+    public TrackListing? selectedListing;
 
     public static DateTime LocalPlayDateAndTime(TrackListing listing) => listing.PlayUtcDateAndTime.ToLocalTime();
 
