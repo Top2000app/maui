@@ -1,16 +1,15 @@
-﻿namespace Top2000MauiApp.Pages.Searching
-{
-    public class TracksSearchHandler : SearchHandler
-    {
-        private ViewModel ViewModel => (ViewModel)BindingContext;
+﻿namespace Top2000MauiApp.Pages.Searching;
 
-        async protected override void OnQueryChanged(string oldValue, string newValue)
+public class TracksSearchHandler : SearchHandler
+{
+    private ViewModel ViewModel => (ViewModel)BindingContext;
+
+    protected override async void OnQueryChanged(string oldValue, string newValue)
+    {
+        if (ViewModel != null && newValue != null && newValue != oldValue)
         {
-            if (ViewModel != null && newValue != null && newValue != oldValue)
-            {
-                ViewModel.QueryText = newValue;
-                await ViewModel.ExceuteSearchAsync();
-            }
+            ViewModel.QueryText = newValue;
+            await ViewModel.ExceuteSearchAsync();
         }
     }
 }
