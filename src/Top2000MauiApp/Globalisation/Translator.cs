@@ -16,7 +16,9 @@ public class Translator : INotifyPropertyChanged
             string? value = null;
             try
             {
-                value = AppResources.ResourceManager.GetString(text, AppResources.Culture);
+                var manager = AppResources.ResourceManager;
+
+                value = manager.GetString(text, AppResources.Culture);
             }
             catch (FileNotFoundException)
             {
