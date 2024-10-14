@@ -31,8 +31,8 @@ public partial class View : Grid
 
     private async void OnViewVideoClick(object sender, EventArgs e)
     {
-        var trackTitle = this.ViewModel.Title.Replace(' ', '+');
-        var artistName = this.ViewModel.Artist.Replace(' ', '+');
+        var trackTitle = this.ViewModel?.Title?.Replace(' ', '+');
+        var artistName = this.ViewModel?.Artist?.Replace(' ', '+');
 
         var url = new Uri($"https://duckduckgo.com/?q=!ducky+onsite:www.youtube.com+{trackTitle}+{artistName}");
 

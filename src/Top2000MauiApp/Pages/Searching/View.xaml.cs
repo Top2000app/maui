@@ -33,7 +33,10 @@ public partial class View : ContentPage, ISortGroupNameProvider
 
         if (string.IsNullOrWhiteSpace(this.ViewModel.QueryText))
         {
-            this.ViewModel.IsFlat = this.ViewModel.GroupBy.Value is GroupByNothing;
+            if (this.ViewModel.GroupBy is not null)
+            {
+                this.ViewModel.IsFlat = this.ViewModel.GroupBy.Value is GroupByNothing;
+            }
         }
 
         GroupSortLayout.IsVisible = false;
@@ -137,8 +140,8 @@ public partial class View : ContentPage, ISortGroupNameProvider
 
     private void SetTitlesForButton()
     {
-        GroupByButton.Text = $"{Translator.Instance["GroupByHeader"]} {this.ViewModel.GroupBy.Name}";
-        SortByButton.Text = $"{Translator.Instance["SortByHeader"]} {this.ViewModel.SortBy.Name}";
+        GroupByButton.Text = $"{Translator.Instance["GroupByHeader"]} {this.ViewModel.GroupBy?.Name}";
+        SortByButton.Text = $"{Translator.Instance["SortByHeader"]} {this.ViewModel.SortBy?.Name}";
     }
 
     private void ShowSortGroupLayout(object sender, EventArgs e)

@@ -1,5 +1,4 @@
-﻿using CommunityToolkit.Mvvm.ComponentModel;
-using Top2000.Features.AllEditions;
+﻿using Top2000.Features.AllEditions;
 using Top2000.Features.Searching;
 using Top2000MauiApp.Common;
 
@@ -23,15 +22,15 @@ public partial class ViewModel : ObservableObject
     }
 
     [ObservableProperty]
-    public string queryText;
+    public string? queryText;
 
 
     [ObservableProperty]
-    public GroupViewModel groupBy;
+    public GroupViewModel? groupBy;
 
 
     [ObservableProperty]
-    public SortViewModel sortBy;
+    public SortViewModel? sortBy;
 
 
     [ObservableProperty]
@@ -46,7 +45,7 @@ public partial class ViewModel : ObservableObject
     public SearchedTrack? selectedTrack;
 
     [ObservableProperty]
-    public string resultsCount;
+    public string? resultsCount;
 
     public ObservableList<GroupViewModel> GroupByOptions { get; }
 
@@ -86,9 +85,9 @@ public partial class ViewModel : ObservableObject
 
         var request = new SearchTrackRequest
         {
-            QueryString = this.QueryText,
-            Sorting = this.SortBy.Value,
-            Grouping = this.GroupBy.Value,
+            QueryString = this.QueryText ?? "",
+            Sorting = this.SortBy!.Value,
+            Grouping = this.GroupBy!.Value,
             LatestYear = lastEdition.Year,
 
         };

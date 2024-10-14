@@ -63,6 +63,8 @@ public partial class View : ContentPage
 
     private async void OnJumpGroupButtonClick(object sender, EventArgs e)
     {
+        if (trackInformation.IsVisible) { return; }
+
         Shell.SetNavBarIsVisible(this, false);
         Shell.SetTabBarIsVisible(this, false);
 
@@ -88,6 +90,8 @@ public partial class View : ContentPage
 
     private void JumpToSelectedDateTime(DateTime selectedDate)
     {
+        if (trackInformation.IsVisible) { return; }
+
         var group = this.ViewModel
             .Listings
             .LastOrDefault(x => x.Key <= selectedDate);

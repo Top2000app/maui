@@ -48,6 +48,8 @@ public partial class View : ContentPage
 
     private async void OnSelectYearButtonClick(object sender, System.EventArgs e)
     {
+        if (trackInformation.IsVisible) { return; }
+
         Shell.SetNavBarIsVisible(this, false);
         Shell.SetTabBarIsVisible(this, false);
 
@@ -59,8 +61,10 @@ public partial class View : ContentPage
 
     private async void OnJumpGroupButtonClick(object sender, System.EventArgs e)
     {
+        if (trackInformation.IsVisible) { return; }
+
         var groups = this.ViewModel.Listings.Select(x => x.Key)
-                                     .ToArray();
+                                        .ToArray();
 
         var result = await this.DisplayActionSheet(AppResources.JumpToGroup, AppResources.Cancel, null, groups);
 
@@ -122,7 +126,6 @@ public partial class View : ContentPage
     private async Task CloseTrackInformationAsync()
     {
         this.ViewModel.SelectedListing = null;
-
 
         Shell.SetTabBarIsVisible(this, true);
         Shell.SetNavBarIsVisible(this, true);

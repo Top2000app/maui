@@ -15,55 +15,55 @@ public partial class ViewModel : ObservableObject
     }
 
     [ObservableProperty]
-    public string title;
+    public string? title;
 
     [ObservableProperty]
-    public string artist;
+    public string? artist;
 
     [ObservableProperty]
-    public string artistWithYear;
+    public string? artistWithYear;
 
     public ObservableList<ListingInformationViewModel> Listings { get; }
 
     [ObservableProperty]
-    public int totalListings;
+    public int? totalListings;
 
     [ObservableProperty]
-    public ListingInformation highest;
+    public ListingInformation? highest;
 
     [ObservableProperty]
-    public ListingInformation lowest;
-
-
-    [ObservableProperty]
-    public ListingInformation latest;
+    public ListingInformation? lowest;
 
 
     [ObservableProperty]
-    public ListingInformation first;
+    public ListingInformation? latest;
 
 
     [ObservableProperty]
-    public int appearances;
+    public ListingInformation? first;
 
 
     [ObservableProperty]
-    public bool isLatestListed;
+    public int? appearances;
 
 
     [ObservableProperty]
-    public int appearancesPossible;
+    public bool? isLatestListed;
 
 
     [ObservableProperty]
-    public int appearancesPossiblePercentage;
+    public int? appearancesPossible;
 
 
     [ObservableProperty]
-    public int totalTop2000Percentage;
+    public int? appearancesPossiblePercentage;
+
 
     [ObservableProperty]
-    public string localUtcDateAndTime;
+    public int? totalTop2000Percentage;
+
+    [ObservableProperty]
+    public string? localUtcDateAndTime;
 
     public async Task LoadTrackDetailsAsync(int trackId)
     {
