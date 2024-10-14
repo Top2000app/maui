@@ -1,5 +1,4 @@
 ﻿using Top2000MauiApp.Common;
-using Top2000MauiApp.XamarinForms;
 
 namespace Top2000MauiApp.Pages.Overview.Date;
 

@@ -1,7 +1,6 @@
 ﻿using Top2000MauiApp.Globalisation;
 using Top2000MauiApp.Pages.NavigationShell;
 using Top2000MauiApp.Themes;
-using Top2000MauiApp.XamarinForms;
 
 namespace Top2000MauiApp.Pages.Settings;
 

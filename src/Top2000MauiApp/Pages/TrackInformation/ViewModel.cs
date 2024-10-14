@@ -1,8 +1,6 @@
-﻿using CommunityToolkit.Mvvm.ComponentModel;
-using Top2000.Features.TrackInformation;
+﻿using Top2000.Features.TrackInformation;
 using Top2000MauiApp.Common;
 using Top2000MauiApp.Themes;
-using Top2000MauiApp.XamarinForms;
 
 namespace Top2000MauiApp.Pages.TrackInformation;
 

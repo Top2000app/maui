@@ -1,6 +1,4 @@
-﻿using Top2000MauiApp.XamarinForms;
-
-namespace Top2000MauiApp.Pages.Overview.Date;
+﻿namespace Top2000MauiApp.Pages.Overview.Date;
 
 [XamlCompilation(XamlCompilationOptions.Compile)]
 public partial class View : ContentPage
@@ -12,22 +10,6 @@ public partial class View : ContentPage
     }
 
     public ViewModel ViewModel => (ViewModel)this.BindingContext;
-
-    private static int FirstVisibleItemIndex { get; set; }
-
-    public async Task ScrollToCorrectPositionAsync(int index, ScrollToPosition scrollToPosition = ScrollToPosition.Start)
-    {
-        var tries = 0;
-
-        while (index != FirstVisibleItemIndex && tries < 6)
-        {
-            listings.ScrollTo(index, position: scrollToPosition, animate: false);
-
-            tries++;
-
-            await Task.Delay(200);
-        }
-    }
 
     protected override bool OnBackButtonPressed()
     {
@@ -60,10 +42,10 @@ public partial class View : ContentPage
             await this.ViewModel.InitialiseViewModelAsync();
         }
 
-        await this.JumpWhenTop2000IsOn();
+        this.JumpWhenTop2000IsOn();
     }
 
-    private async Task JumpWhenTop2000IsOn()
+    private void JumpWhenTop2000IsOn()
     {
         var first = this.ViewModel.Listings[0].Key;
         var last = this.ViewModel.Listings[0].Key;
@@ -71,7 +53,7 @@ public partial class View : ContentPage
 
         if (current > first && current < last)
         {
-            await this.JumpToSelectedDateTime(current);
+            this.JumpToSelectedDateTime(current);
         }
         else
         {
@@ -90,62 +72,39 @@ public partial class View : ContentPage
         await GroupFlyout.TranslateTo(0, 0);
     }
 
-    private async void OnGroupSelected(object sender, SelectionChangedEventArgs e)
+    private void OnGroupSelected(object sender, SelectionChangedEventArgs e)
     {
         if (dates.SelectedItem is DateTime date)
         {
             Shell.SetTabBarIsVisible(this, true);
             Shell.SetNavBarIsVisible(this, true);
-            await GroupFlyout.TranslateTo(this.Width * -1, 0);
+            GroupFlyout.TranslateTo(this.Width * -1, 0);
             GroupFlyout.IsVisible = false;
 
-            await this.JumpToSelectedDateTime(date);
+            this.JumpToSelectedDateTime(date);
             dates.SelectedItem = null;
         }
     }
 
-    private async Task JumpToSelectedDateTime(DateTime selectedDate)
+    private void JumpToSelectedDateTime(DateTime selectedDate)
     {
-        var tracksGrouped = this.ViewModel.Listings;
-        var groupsBefore = tracksGrouped.Where(x => x.Key <= selectedDate);
-        var group = groupsBefore.LastOrDefault();
+        var group = this.ViewModel
+            .Listings
+            .LastOrDefault(x => x.Key <= selectedDate);
 
-        if (group != null)
+        if (group is not null)
         {
             var firstGroup = group.FirstOrDefault();
-            if (firstGroup != null)
+            if (firstGroup is not null)
             {
-                var position = group.First().Position;
-                var totalTracks = this.ViewModel.Listings.SelectMany(x => x).Count();
-                var groupsBeforeCount = groupsBefore.Count();
-
-                const int ShowGroup = 1;
-                var index = totalTracks - position + groupsBeforeCount - ShowGroup;
-
-                if (totalTracks == 500)
-                {
-                    index = totalTracks - (position - 2000) + groupsBeforeCount - ShowGroup;
-                }
-
-
-                if (index < 0)
-                {
-                    index = 0;
-                }
-
-                await this.ScrollToCorrectPositionAsync(index);
+                this.listings.ScrollTo(group.First(), position: ScrollToPosition.Center, animate: false);
             }
         }
     }
 
-    private void Tracks_Scrolled(object sender, ItemsViewScrolledEventArgs e)
+    private void OpenTodayClick(object sender, EventArgs e)
     {
-        FirstVisibleItemIndex = e.FirstVisibleItemIndex;
-    }
-
-    private async void OpenTodayClick(object sender, EventArgs e)
-    {
-        await this.JumpToSelectedDateTime(DateTime.Now);
+        this.JumpToSelectedDateTime(DateTime.Now);
     }
 
     private async void OnListingSelected(object sender, SelectionChangedEventArgs e)

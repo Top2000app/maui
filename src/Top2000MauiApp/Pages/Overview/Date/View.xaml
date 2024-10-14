@@ -63,7 +63,6 @@
                             VerticalOptions="FillAndExpand"
                             ItemSizingStrategy="MeasureAllItems"
                             IsGrouped="True"
-                            Scrolled="Tracks_Scrolled"
                             SelectionChanged="OnListingSelected"
                             SelectedItem="{Binding SelectedListing, Mode=TwoWay}"
                             SelectionMode="Single">

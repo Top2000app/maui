@@ -13,7 +13,7 @@ public static class MauiProgram
     {
         var builder = MauiApp.CreateBuilder();
         builder
-            .UseMauiApp<Top2000MauiApp.XamarinForms.App>()
+            .UseMauiApp<App>()
             .ConfigureFonts(fonts =>
             {
                 fonts.AddFont("MaterialIcons.ttf", "MaterialIcons");
@@ -56,8 +56,8 @@ public static class MauiProgram
 
         var serviceProvider = builder.Build();
 
-        Top2000MauiApp.XamarinForms.App.ServiceProvider = serviceProvider.Services;
-        Top2000MauiApp.XamarinForms.App.EnsureDatabaseIsCreatedAsync().GetAwaiter().GetResult();
+        App.ServiceProvider = serviceProvider.Services;
+        App.EnsureDatabaseIsCreatedAsync().GetAwaiter().GetResult();
 
 
         return serviceProvider;

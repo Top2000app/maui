@@ -1,6 +1,4 @@
-﻿using Top2000MauiApp.XamarinForms;
-
-namespace Top2000MauiApp.Pages.TrackInformation;
+﻿namespace Top2000MauiApp.Pages.TrackInformation;
 
 [XamlCompilation(XamlCompilationOptions.Compile)]
 public partial class View : Grid

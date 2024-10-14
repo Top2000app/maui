@@ -1,6 +1,5 @@
 ﻿using Top2000.Features.AllEditions;
 using Top2000MauiApp.Globalisation;
-using Top2000MauiApp.XamarinForms;
 
 namespace Top2000MauiApp.Pages.Overview.Position;
 
@@ -73,20 +72,9 @@ public partial class View : ContentPage
 
     private void JumpIntoList(string groupElected)
     {
-        var groupIndex = this.ViewModel.Listings.FindIndex(x => x.Key == groupElected);
         var group = this.ViewModel.Listings.Single(x => x.Key == groupElected);
 
-        var position = group.First().Position;
-
-        const int ShowGroup = 1;
-        var index = position + groupIndex - ShowGroup;
-
-        if (index < 0)
-        {
-            index = 0;
-        }
-
-        listings.ScrollTo(index, position: ScrollToPosition.Start, animate: false);
+        listings.ScrollTo(group.First(), position: ScrollToPosition.Center, animate: false);
     }
 
     private async void NewEditionSelected(object sender, SelectionChangedEventArgs e)

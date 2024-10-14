@@ -5,7 +5,7 @@ using Top2000MauiApp.Pages.NavigationShell;
 using Top2000MauiApp.Themes;
 
 
-namespace Top2000MauiApp.XamarinForms;
+namespace Top2000MauiApp;
 
 public partial class App : Application
 {
@@ -56,7 +56,7 @@ public partial class App : Application
     {
         try
         {
-            await Task.Delay(3_1000);
+            await Task.Delay(3_000);
             var databasGen = GetService<IUpdateClientDatabase>();
             var onlineStore = GetService<OnlineDataSource>();
 
@@ -66,11 +66,6 @@ public partial class App : Application
         {
             // I don't want a crash here, just continue. 
         }
-    }
-
-    protected override void OnStart()
-    {
-        //  AppCenter.Start("89fbeb5b-5ec9-4456-86c7-214421330f73", typeof(Analytics), typeof(Crashes));
     }
 
     private void SetCulture()

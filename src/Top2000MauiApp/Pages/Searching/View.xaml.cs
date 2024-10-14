@@ -1,7 +1,5 @@
 ﻿using Top2000.Features.Searching;
 using Top2000MauiApp.Globalisation;
-using Top2000MauiApp.XamarinForms;
-
 
 namespace Top2000MauiApp.Pages.Searching;
 
