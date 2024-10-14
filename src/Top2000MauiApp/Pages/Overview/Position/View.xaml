@@ -45,14 +45,14 @@
     <Shell.TitleView>
         <StackLayout HorizontalOptions="FillAndExpand" Orientation="Horizontal">
 
-            <Label Text="{x:Static g:Symbols.Menu}" FontFamily="{OnPlatform Android=MaterialIcons#}" FontSize="25"
+            <!--<Label Text="{x:Static g:Symbols.Menu}" FontFamily="{OnPlatform Android=MaterialIcons#}" FontSize="25"
                    TextColor="White"
-                   VerticalOptions="Center" />
+                   VerticalOptions="Center" />-->
 
             <Label Margin="5,0,0,0" Text="{Binding SelectedEditionYear, Mode=OneWay}" TextColor="White" FontSize="20" VerticalTextAlignment="Center" VerticalOptions="Center" />
 
             <StackLayout.GestureRecognizers>
-                <TapGestureRecognizer Tapped="OnSelectYearButtonClick" />
+                <TapGestureRecognizer Tapped="MenuButtonClicked" />
             </StackLayout.GestureRecognizers>
         </StackLayout>
     </Shell.TitleView>
@@ -175,6 +175,17 @@
                     </CollectionView.ItemTemplate>
                 </CollectionView>
             </Grid>
+
+            <AbsoluteLayout>
+                <Button x:Name="menuButton" BorderColor="{StaticResource Top2000Colour}" BackgroundColor="{StaticResource Top2000Colour}"
+                    TextColor="White" WidthRequest="70" Text="{Binding SelectedEditionYear}" FontSize="13" FontAttributes="Bold"
+                    HeightRequest="70" Clicked="MenuButtonClicked" CornerRadius="35" 
+                        AbsoluteLayout.LayoutFlags="PositionProportional" AbsoluteLayout.LayoutBounds=".95,.95,80,40">
+                    <Button.Shadow>
+                        <Shadow Brush="Black" Offset="20,20" Radius="40" Opacity="0.2" />
+                    </Button.Shadow>
+                </Button>
+            </AbsoluteLayout>
         </Grid>
     </ContentPage.Content>
 </ContentPage>

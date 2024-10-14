@@ -6,9 +6,12 @@ namespace Top2000MauiApp.Pages.Overview.Position;
 [XamlCompilation(XamlCompilationOptions.Compile)]
 public partial class View : ContentPage
 {
+    private readonly IMediator mediator;
+
     public View()
     {
         this.BindingContext = App.GetService<ViewModel>();
+        mediator = App.GetService<IMediator>();
         this.InitializeComponent();
     }
 
@@ -140,4 +143,38 @@ public partial class View : ContentPage
         await EditionsFlyout.TranslateTo(this.Width * -1, 0);
         EditionsFlyout.IsVisible = false;
     }
+
+    private async void MenuButtonClicked(object sender, EventArgs e)
+    {
+        var editions = ViewModel.Editions;
+        var options = editions.Select(x => x.Year.ToString()).ToArray();
+        var result = await this.DisplayActionSheetAsync(AppResources.SelectEdition, AppResources.Cancel, options);
+
+        if (result.IsValid && int.TryParse(result.SelectedOption, out var newYear))
+        {
+            if (newYear != ViewModel.SelectedEditionYear)
+            {
+                var edition = editions.Single(x => x.Year == newYear);
+                await ViewModel.InitialiseViewModelAsync(edition);
+            }
+        }
+    }
+
+
 }
+
+public static class PageExtensions
+{
+    public static async Task<DisplayActionSheetResult> DisplayActionSheetAsync(this ContentPage page, string title, string cancel, params string[] options)
+    {
+        var result = await page.DisplayActionSheet(title, cancel, destruction: null, options);
+
+        return new DisplayActionSheetResult
+        (
+            IsValid: result is not null && !result.Equals(cancel),
+            SelectedOption: result ?? string.Empty
+        );
+    }
+}
+
+public readonly record struct DisplayActionSheetResult(bool IsValid, string SelectedOption);
