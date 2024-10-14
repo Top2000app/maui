@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Shell xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
        xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-       xmlns:g="clr-namespace:Top2000MauiApp.Common"
+       xmlns:g="clr-namespace:Top2000MauiApp.Themes"
        xmlns:position="clr-namespace:Top2000MauiApp.Pages.Overview.Position"
        xmlns:dates="clr-namespace:Top2000MauiApp.Pages.Overview.Date"
        xmlns:searching="clr-namespace:Top2000MauiApp.Pages.Searching"
