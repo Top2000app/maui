@@ -16,13 +16,13 @@ public partial class View : ContentPage, ISortGroupNameProvider
 
     public string GetNameForGroup(IGroup group)
     {
-        return this.GetNameForGroupOrSortBy(group)
+        return GetNameForGroupOrSortBy(group)
             ?? throw new NotImplementedException($"Group '{group.GetType()}' was not defined yet.");
     }
 
     public string GetNameForSort(ISort sort)
     {
-        return this.GetNameForGroupOrSortBy(sort)
+        return GetNameForGroupOrSortBy(sort)
             ?? throw new NotImplementedException($"Display text for sort option '{sort.GetType()}' was not defined.");
     }
 
@@ -53,7 +53,7 @@ public partial class View : ContentPage, ISortGroupNameProvider
         return base.OnBackButtonPressed();
     }
 
-    private string? GetNameForGroupOrSortBy(object item)
+    private static string? GetNameForGroupOrSortBy(object item)
     {
         return item switch
         {
@@ -120,7 +120,7 @@ public partial class View : ContentPage, ISortGroupNameProvider
     {
         var sortings = this.ViewModel.SortByOptions.Select(x => x.Name).ToArray();
 
-        string toSort = await this.DisplayActionSheet(AppResources.SortByHeader, AppResources.Cancel, null, sortings);
+        var toSort = await this.DisplayActionSheet(AppResources.SortByHeader, AppResources.Cancel, null, sortings);
 
         if (!string.IsNullOrEmpty(toSort) && toSort != AppResources.Cancel)
         {

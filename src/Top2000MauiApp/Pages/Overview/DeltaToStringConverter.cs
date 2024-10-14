@@ -7,11 +7,11 @@ public class DeltaToStringConverter : ValueConverterBase<int?, string>
     public override string Convert(int? offset)
     {
         return offset.HasValue && offset.Value != 0
-            ? this.PositiveInteger(offset.Value).ToString(App.NumberFormatProvider)
+            ? PositiveInteger(offset.Value).ToString(App.NumberFormatProvider)
             : string.Empty;
     }
 
-    private int PositiveInteger(int value)
+    private static int PositiveInteger(int value)
     {
         return value < 0
             ? value * -1

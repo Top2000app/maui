@@ -18,8 +18,8 @@ public partial class App : Application
     public App()
     {
         this.InitializeComponent();
-        this.SetCulture();
-        this.SetTheme();
+        SetCulture();
+        SetTheme();
 
         var navigationShell = GetService<IMainShell>();
 
@@ -68,13 +68,13 @@ public partial class App : Application
         }
     }
 
-    private void SetCulture()
+    private static void SetCulture()
     {
         var localisationService = App.GetService<ILocalisationService>();
         localisationService.SetCultureFromSetting();
     }
 
-    private void SetTheme()
+    private static void SetTheme()
     {
         var themeService = GetService<IThemeService>();
         themeService.SetThemeFromSetting();
