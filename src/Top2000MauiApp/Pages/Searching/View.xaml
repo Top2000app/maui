@@ -40,7 +40,7 @@
         <ToolbarItem x:Name="OpenGroupAndSortBy" Clicked="ShowSortGroupLayout">
             <ToolbarItem.IconImageSource>
                 <FontImageSource Glyph="{x:Static g:Symbols.Options}" Color="White"
-                                 FontFamily="{OnPlatform Android=MaterialIcons#}" />
+                                 FontFamily="{OnPlatform Android=MaterialIcons}" />
             </ToolbarItem.IconImageSource>
         </ToolbarItem>
     </ContentPage.ToolbarItems>

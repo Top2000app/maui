@@ -31,7 +31,7 @@
             <ImageButton Clicked="OnViewVideoClick" BackgroundColor="Transparent">
                 <ImageButton.Source>
                     <FontImageSource Glyph="{x:Static g:Symbols.Video}"
-                                     FontFamily="{OnPlatform Android=MaterialIcons#}" />
+                                     FontFamily="{OnPlatform Android=MaterialIcons}" />
                 </ImageButton.Source>
             </ImageButton>
         </StackLayout>
