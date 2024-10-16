@@ -39,13 +39,13 @@
         <ToolbarItem Clicked="OnJumpGroupButtonClick">
             <ToolbarItem.IconImageSource>
                 <FontImageSource Glyph="{x:Static g:Symbols.FilterList}" Color="White"
-                                 FontFamily="{OnPlatform Android=MaterialIcons#}" />
+                                 FontFamily="{OnPlatform Android=MaterialIcons}" />
             </ToolbarItem.IconImageSource>
         </ToolbarItem>
         <ToolbarItem x:Name="jumpToToday" Clicked="OpenTodayClick">
             <ToolbarItem.IconImageSource>
                 <FontImageSource Glyph="{x:Static g:Symbols.Today}" Color="White"
-                                 FontFamily="{OnPlatform Android=MaterialIcons#}" />
+                                 FontFamily="{OnPlatform Android=MaterialIcons}" />
             </ToolbarItem.IconImageSource>
         </ToolbarItem>
     </ContentPage.ToolbarItems>
@@ -92,7 +92,7 @@
 
                                     <Label Style="{StaticResource SmallLabelStyle}"
                                     FontSize="{Binding Converter={StaticResource TrackListingSymbolFontSizeConverter}}"
-                                   FontFamily="{OnPlatform Android=MaterialIcons#}"
+                                   FontFamily="{OnPlatform Android=MaterialIcons}"
                                    Text="{Binding Converter={StaticResource DeltaToSymbolConverter}}"
                                    TextColor="{Binding Converter={StaticResource DeltaToSymbolColour}}" />
                                 </Grid>

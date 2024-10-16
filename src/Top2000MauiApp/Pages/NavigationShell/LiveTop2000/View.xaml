@@ -12,7 +12,7 @@
     <TabBar x:Name="ShellTabBar">
         <Tab x:Name="ViewByDateTab" Title="Live!">
             <Tab.Icon>
-                <FontImageSource FontFamily="{OnPlatform Android=MaterialIcons#}" Glyph="{x:Static g:Symbols.Clock}" />
+                <FontImageSource FontFamily="{OnPlatform Android=MaterialIcons}" Glyph="{x:Static g:Symbols.Clock}" />
             </Tab.Icon>
 
             <ShellContent Route="ViewByDate" ContentTemplate="{DataTemplate dates:View}" />
@@ -20,21 +20,21 @@
 
         <Tab x:Name="OverviewTab" Title="{Binding [Overview], Source={x:Static res:Translator.Instance}}">
             <Tab.Icon>
-                <FontImageSource FontFamily="{OnPlatform Android=MaterialIcons#}" Glyph="{x:Static g:Symbols.Overview}" />
+                <FontImageSource FontFamily="{OnPlatform Android=MaterialIcons}" Glyph="{x:Static g:Symbols.Overview}" />
             </Tab.Icon>
             <ShellContent ContentTemplate="{DataTemplate position:View}" />
         </Tab>
 
         <Tab x:Name="SearchTab" Title="{Binding [Search], Source={x:Static res:Translator.Instance}}">
             <Tab.Icon>
-                <FontImageSource FontFamily="{OnPlatform Android=MaterialIcons#}" Glyph="{x:Static g:Symbols.Search}" />
+                <FontImageSource FontFamily="{OnPlatform Android=MaterialIcons}" Glyph="{x:Static g:Symbols.Search}" />
             </Tab.Icon>
             <ShellContent ContentTemplate="{DataTemplate searching:View}" />
         </Tab>
 
         <Tab x:Name="SettingsTab" Title="{Binding [Settings], Source={x:Static res:Translator.Instance}}">
             <Tab.Icon>
-                <FontImageSource FontFamily="{OnPlatform Android=MaterialIcons#}" Glyph="{x:Static g:Symbols.Settings}" />
+                <FontImageSource FontFamily="{OnPlatform Android=MaterialIcons}" Glyph="{x:Static g:Symbols.Settings}" />
             </Tab.Icon>
             <ShellContent x:Name="GeneralTab" Title="{Binding [General], Source={x:Static res:Translator.Instance}}"
                           ContentTemplate="{DataTemplate settings:General}" />

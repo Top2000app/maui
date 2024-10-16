@@ -40,7 +40,7 @@
         <ToolbarItem x:Name="OpenGroupAndSortBy" Clicked="ShowSortGroupLayout">
             <ToolbarItem.IconImageSource>
                 <FontImageSource Glyph="{x:Static g:Symbols.Options}" Color="White"
-                                 FontFamily="{OnPlatform Android=MaterialIcons#}" />
+                                 FontFamily="{OnPlatform Android=MaterialIcons}" />
             </ToolbarItem.IconImageSource>
         </ToolbarItem>
     </ContentPage.ToolbarItems>
@@ -60,7 +60,7 @@
                         Clicked="OnGroupByButtonClick" />
 
                 <Button x:Name="SortByButton" BackgroundColor="{DynamicResource ButtonBackgroundColor}" Text="{Binding [SortByHeader], Source={x:Static res:Translator.Instance}}"
-                        TextColor="{DynamicResource ButtonTextColor}"
+                        TextColor="{DynamicResource ButtonTextColor}" Margin="0,5,0,0"
                         Clicked="OnSortByButtonClick" />
             </StackLayout>
 
@@ -102,7 +102,7 @@
                             <Label Grid.Column="1" Grid.Row="0" Text="{Binding Title}"  Style="{StaticResource MediumLabelStyle}" Margin="0,4,20,0" />
                             <Label Grid.Column="1" Grid.Row="1" Text="{Binding Artist}" Opacity=".5" Style="{StaticResource SmallLabelStyle}" Margin="0,0,20,0" />
 
-                            <Label Grid.Column="1" Grid.Row="2" Text="{Binding PositionIn2020}" Opacity=".5" Style="{StaticResource SmallLabelStyle}" Margin="0,0,20,0" />
+                            <Label Grid.Column="1" Grid.Row="2" Text="{Binding PositionInLatestEdition}" Opacity=".5" Style="{StaticResource SmallLabelStyle}" Margin="0,0,20,0" />
                         </Grid>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
