@@ -17,6 +17,19 @@
                 <Setter Property="Shell.TabBarForegroundColor" Value="{DynamicResource NavigationBarColor}" />
             </Style>
 
+            <Style x:Key="ActionButtonWithShadow" TargetType="Button">
+                <Setter Property="Shadow.Opacity" Value="{DynamicResource Opacity}"/>
+                <Setter Property="BorderColor" Value="{DynamicResource Top2000Colour}" />
+                <Setter Property="BackgroundColor" Value="{DynamicResource Top2000Colour}" />
+                <Setter Property="TextColor" Value="White" />
+                <Setter Property="WidthRequest" Value="60" />
+                <Setter Property="FontFamily" Value="{OnPlatform Android=MaterialIcons}" />
+                <Setter Property="FontSize" Value="20" />
+                <Setter Property="FontAttributes" Value="Bold" />
+                <Setter Property="HeightRequest" Value="60" />
+                <Setter Property="CornerRadius" Value="30" />
+            </Style>
+            
             <Style x:Key="Separator" TargetType="BoxView">
                 <Setter Property="HeightRequest" Value="1" />
                 <Setter Property="HorizontalOptions" Value="FillAndExpand" />

@@ -1,5 +1,4 @@
-﻿using Top2000.Features.AllEditions;
-using Top2000MauiApp.Globalisation;
+﻿using Top2000MauiApp.Globalisation;
 
 namespace Top2000MauiApp.Pages.Overview.Position;
 
@@ -28,16 +27,6 @@ public partial class View : ContentPage
 
     protected override bool OnBackButtonPressed()
     {
-        if (EditionsFlyout.IsVisible)
-        {
-            Shell.SetTabBarIsVisible(this, true);
-            Shell.SetNavBarIsVisible(this, true);
-            EditionsFlyout.TranslateTo(this.Width * -1, 0);
-            EditionsFlyout.IsVisible = false;
-
-            return true;
-        }
-
         if (trackInformation.IsVisible)
         {
 #pragma warning disable CS4014 // Because this call is not awaited, execution of the current method continues before the call is completed
@@ -47,19 +36,6 @@ public partial class View : ContentPage
         }
 
         return base.OnBackButtonPressed();
-    }
-
-    private async void OnSelectYearButtonClick(object sender, System.EventArgs e)
-    {
-        if (trackInformation.IsVisible) { return; }
-
-        Shell.SetNavBarIsVisible(this, false);
-        Shell.SetTabBarIsVisible(this, false);
-
-        await EditionsFlyout.TranslateTo(this.Width * -1, 0, 0);
-
-        EditionsFlyout.IsVisible = true;
-        await EditionsFlyout.TranslateTo(0, 0);
     }
 
     private async void OnJumpGroupButtonClick(object sender, System.EventArgs e)
@@ -84,27 +60,27 @@ public partial class View : ContentPage
         listings.ScrollTo(group.First(), position: ScrollToPosition.Center, animate: false);
     }
 
-    private async void NewEditionSelected(object sender, SelectionChangedEventArgs e)
-    {
-        if (AllEditions.SelectedItem is Edition edition)
-        {
-            this.ViewModel.SelectedEdition = edition;
-            this.ViewModel.SelectedEditionYear = edition.Year;
+    //private async void NewEditionSelected(object sender, SelectionChangedEventArgs e)
+    //{
+    //    if (AllEditions.SelectedItem is Edition edition)
+    //    {
+    //        this.ViewModel.SelectedEdition = edition;
+    //        this.ViewModel.SelectedEditionYear = edition.Year;
 
-            var loadingTask = this.ViewModel.LoadAllListingsAsync();
+    //        var loadingTask = this.ViewModel.LoadAllListingsAsync();
 
-            Shell.SetTabBarIsVisible(this, true);
-            Shell.SetNavBarIsVisible(this, true);
-            await EditionsFlyout.TranslateTo(this.Width * -1, 0);
-            EditionsFlyout.IsVisible = false;
+    //        Shell.SetTabBarIsVisible(this, true);
+    //        Shell.SetNavBarIsVisible(this, true);
+    //        await EditionsFlyout.TranslateTo(this.Width * -1, 0);
+    //        EditionsFlyout.IsVisible = false;
 
-            await loadingTask;
+    //        await loadingTask;
 
-            this.JumpIntoList(this.ViewModel.Listings[0].Key);
+    //        this.JumpIntoList(this.ViewModel.Listings[0].Key);
 
-            AllEditions.SelectedItem = null;
-        }
-    }
+    //        AllEditions.SelectedItem = null;
+    //    }
+    //}
 
     private async void OnListingSelected(object sender, SelectionChangedEventArgs e)
     {
@@ -136,14 +112,6 @@ public partial class View : ContentPage
         trackInformation.IsVisible = false;
     }
 
-    private async void OnCloseButtonClick(object sender, EventArgs e)
-    {
-        Shell.SetTabBarIsVisible(this, true);
-        Shell.SetNavBarIsVisible(this, true);
-        await EditionsFlyout.TranslateTo(this.Width * -1, 0);
-        EditionsFlyout.IsVisible = false;
-    }
-
     private async void MenuButtonClicked(object sender, EventArgs e)
     {
         var editions = ViewModel.Editions;
@@ -159,8 +127,6 @@ public partial class View : ContentPage
             }
         }
     }
-
-
 }
 
 public static class PageExtensions

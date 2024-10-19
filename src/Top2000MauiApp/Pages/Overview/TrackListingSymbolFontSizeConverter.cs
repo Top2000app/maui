@@ -9,7 +9,12 @@ public class TrackListingSymbolFontSizeConverter : ValueConverterBase<TrackListi
     {
         var value = track.Delta;
 
-        if (value is null || !value.HasValue || value.Value == 0)
+        if (value == 0)
+        {
+            return 15;
+        }
+
+        if (value is null || !value.HasValue)
         {
             return 20;
         }

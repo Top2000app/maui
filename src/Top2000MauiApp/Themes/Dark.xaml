@@ -17,4 +17,8 @@
     <Color x:Key="ButtonTextColor">White</Color>
     <Color x:Key="RingBaseColor">WhiteSmoke</Color>
     <Color x:Key="TextColor">White</Color>
+
+    <x:Boolean x:Key="IsLight">false</x:Boolean>
+    <x:Boolean x:Key="IsDark">true</x:Boolean>
+
 </ResourceDictionary>
