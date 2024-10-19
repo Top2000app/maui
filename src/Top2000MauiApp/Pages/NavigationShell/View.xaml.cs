@@ -30,16 +30,10 @@ public partial class View : Shell, IMainShell
         SettingsTab.Title = strings["Settings"];
 
         GeneralTab.Title = strings["General"];
-        PrivacyTab.Title = strings["Privacy"];
-        ThirdPartyTab.Title = strings["ThirdParty"];
         AboutTab.Title = strings["About"];
 
-        PrivacyTab.IsVisible = false;
-        ThirdPartyTab.IsVisible = false;
         AboutTab.IsVisible = false;
 
-        PrivacyTab.IsVisible = true;
-        ThirdPartyTab.IsVisible = true;
         AboutTab.IsVisible = true;
     }
 

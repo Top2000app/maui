@@ -133,31 +133,6 @@ namespace Top2000MauiApp.Globalisation {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to &lt;html&gt;
-        ///    &lt;head&gt;
-        ///        &lt;style&gt;
-        ///            body {
-        ///                font-family: &quot;Calibri&quot;,&quot;sans-serif&quot;;
-        ///                font-size: 14px;
-        ///            }
-        ///            h1, h2 {
-        ///                font-size: 14px;
-        ///            }
-        ///        &lt;/style&gt;
-        ///    &lt;/head&gt;
-        ///    &lt;body&gt;
-        ///        &lt;div&gt;
-        ///            &lt;h1&gt;THIRD PARTY CODE NOTICE&lt;/h1&gt;
-        ///            &lt;p&gt;
-        ///                This software is based on or includes material from the projects listed below. Please Note: Chroomsoft, Top2000, Rick Neeft, is not the original [rest of string was truncated]&quot;;.
-        /// </summary>
-        internal static string Credits {
-            get {
-                return ResourceManager.GetString("Credits", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Donker.
         /// </summary>
         internal static string DarkTheme {
@@ -365,28 +340,6 @@ namespace Top2000MauiApp.Globalisation {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to &lt;html&gt;
-        ///    &lt;head&gt;
-        ///        &lt;style&gt;
-        ///            body {
-        ///                font-family: &quot;Calibri&quot;,&quot;sans-serif&quot;;
-        ///                font-size: 14px;
-        ///            }
-        ///        &lt;/style&gt;
-        ///    &lt;/head&gt;
-        ///&lt;body&gt;
-        ///&lt;h1&gt;Top 2000 App Privacy Verklaring&lt;/h1&gt;
-        ///&lt;p&gt;Uw privacy is belangrijk. In dit privacy statement wordt u op de hoogte gehouden hoe de applicatie gegevens verwerkt en waarom. Wanneer u gebruikt maakt van de app gaat u akkoord met dit privacy statement.&lt;/p&gt;
-        ///&lt;h3&gt;Welke gegevens worden verzameld&lt;/h3&gt;
-        ///&lt;p&gt;Voor een bet [rest of string was truncated]&quot;;.
-        /// </summary>
-        internal static string PrivacyStatement {
-            get {
-                return ResourceManager.GetString("PrivacyStatement", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Ja!.
         /// </summary>
         internal static string RateIt {
@@ -500,6 +453,15 @@ namespace Top2000MauiApp.Globalisation {
         internal static string SelectTheme {
             get {
                 return ResourceManager.GetString("SelectTheme", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Selecteer een editie.
+        /// </summary>
+        internal static string SelectYear {
+            get {
+                return ResourceManager.GetString("SelectYear", resourceCulture);
             }
         }
         

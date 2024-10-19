@@ -17,4 +17,14 @@ public partial class About : ContentPage
     {
         await Launcher.OpenAsync(new Uri("mailto:rick.neeft@outlook.com"));
     }
+
+    private async void GoToPrivacy(object sender, TappedEventArgs e)
+    {
+        await Launcher.OpenAsync(new Uri("https://www.top2000.app/nl/privacypolicy/"));
+    }
+
+    private async void GoToThirdparty(object sender, TappedEventArgs e)
+    {
+        await Launcher.OpenAsync(new Uri("https://www.top2000.app/nl/thirdparty/"));
+    }
 }
