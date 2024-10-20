@@ -58,6 +58,30 @@
                 <Label Text="{Binding [Disclaimer], Source={x:Static res:Translator.Instance}}" Style="{StaticResource MediumLabelStyle}" FontAttributes="Bold" />
                 <Label Text="{Binding [DisclaimerText], Source={x:Static res:Translator.Instance}}" Style="{StaticResource SmallLabelStyle}" />
                 <Label Text="{Binding [Copyright], Source={x:Static res:Translator.Instance}}" Style="{StaticResource SmallLabelStyle}" />
+
+                <Label Text="" Style="{StaticResource SmallLabelStyle}" Margin="0,5,0,0" >
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span Text="{Binding [Privacy], Source={x:Static res:Translator.Instance}}"
+                                  FontSize="15" TextColor="{StaticResource Top2000Colour}" TextDecorations="Underline" />
+                        </FormattedString>
+                    </Label.FormattedText>
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="GoToPrivacy" />
+                    </Label.GestureRecognizers>
+                </Label>
+                
+                <Label Style="{StaticResource SmallLabelStyle}" >
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span Text="{Binding [ThirdParty], Source={x:Static res:Translator.Instance}}"
+                                  FontSize="15" TextColor="{StaticResource Top2000Colour}" TextDecorations="Underline" />
+                        </FormattedString>
+                    </Label.FormattedText>
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="GoToThirdparty" />
+                    </Label.GestureRecognizers>
+                </Label>
             </StackLayout>
         </ScrollView>
     </ContentPage.Content>

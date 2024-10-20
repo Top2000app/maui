@@ -141,149 +141,6 @@
   <data name="Copyright" xml:space="preserve">
     <value>Copyright ©  All rechten voorbehouden</value>
   </data>
-  <data name="Credits" xml:space="preserve">
-    <value>&lt;html&gt;
-    &lt;head&gt;
-        &lt;style&gt;
-            body {
-                font-family: "Calibri","sans-serif";
-                font-size: 14px;
-            }
-            h1, h2 {
-                font-size: 14px;
-            }
-        &lt;/style&gt;
-    &lt;/head&gt;
-    &lt;body&gt;
-        &lt;div&gt;
-            &lt;h1&gt;THIRD PARTY CODE NOTICE&lt;/h1&gt;
-            &lt;p&gt;
-                This software is based on or includes material from the projects listed below. Please Note: Chroomsoft, Top2000, Rick Neeft, is not the original author of the Third Party Code. The original copyright notice and their license are provided for informational purposes only. If you believe mistakes are made or this software makes use of other code packages but are not listed below please contact me at rick@nl
-            &lt;/p&gt;
-        &lt;/div&gt;
-        &lt;div&gt;
-            &lt;h2&gt;I. MediatR by Jimmy Bogard&lt;/h2&gt;
-            &lt;p&gt;
-                Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0
-            &lt;/p&gt;
-            &lt;p&gt;
-                Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
-            &lt;/p&gt;
-        &lt;/div&gt;
-        &lt;div&gt;
-            &lt;h2&gt;II. Sqlite-net by Frank Krueger&lt;/h2&gt;
-            &lt;p&gt;
-                Copyright (c) Krueger Systems, Inc.
-            &lt;/p&gt;
-            &lt;p&gt;
-                All rights reserved.
-            &lt;/p&gt;
-            &lt;p&gt;
-                Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
-            &lt;/p&gt;
-            &lt;p&gt;
-                The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-            &lt;/p&gt;
-            &lt;p&gt;
-                THE SOFTWARE IS PROVIDED AS IS, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-            &lt;/p&gt;
-        &lt;/div&gt;
-        &lt;div&gt;
-            &lt;h2&gt;III. Microsoft Toolkit by Microsoft.Toolkit&lt;/h2&gt;
-            &lt;p&gt;
-                Copyright (c) .NET Foundation and Contributors
-            &lt;/p&gt;
-            &lt;p&gt;
-                All rights reserved.
-            &lt;/p&gt;
-            &lt;p&gt;
-                Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
-            &lt;/p&gt;
-            &lt;p&gt;
-                The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-            &lt;/p&gt;
-            &lt;p&gt;
-                THE SOFTWARE IS PROVIDED AS IS, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-            &lt;/p&gt;
-        &lt;/div&gt;
-        &lt;div&gt;
-            &lt;h2&gt;IV. morelinq by MoreLINQ.Developers&lt;/h2&gt;
-            &lt;p&gt;
-                Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0
-            &lt;/p&gt;
-            &lt;p&gt;
-                Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
-            &lt;/p&gt;
-        &lt;/div&gt;
-        &lt;div&gt;
-            &lt;h2&gt;V. Xamarin.Essentials by Microsoft&lt;/h2&gt;
-            &lt;p&gt;
-                Copyright (c) Microsoft Corporation
-            &lt;/p&gt;
-            &lt;p&gt;
-                All rights reserved.
-            &lt;/p&gt;
-            &lt;p&gt;
-                Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
-            &lt;/p&gt;
-            &lt;p&gt;
-                The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-            &lt;/p&gt;
-            &lt;p&gt;
-                THE SOFTWARE IS PROVIDED AS IS, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-            &lt;/p&gt;
-        &lt;/div&gt;
-        &lt;div&gt;
-            &lt;h2&gt;VI. Newtonsoft.Json by James Newton-King&lt;/h2&gt;
-            &lt;p&gt;
-                Copyright (c) 2007 James Newton-King
-            &lt;/p&gt;
-            &lt;p&gt;
-                All rights reserved.
-            &lt;/p&gt;
-            &lt;p&gt;
-                Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
-            &lt;/p&gt;
-            &lt;p&gt;
-                The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-            &lt;/p&gt;
-            &lt;p&gt;
-                THE SOFTWARE IS PROVIDED AS IS, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-            &lt;/p&gt;
-        &lt;/div&gt;
-        &lt;div&gt;
-            &lt;h2&gt;VII. Xaml-Controls-Gallery by Microsoft&lt;/h2&gt;
-            &lt;p&gt;
-                Copyright (c) Microsoft Corporation. All rights reserved.
-            &lt;/p&gt;
-            &lt;p&gt;
-                Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
-            &lt;/p&gt;
-            &lt;p&gt;
-                The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-            &lt;/p&gt;
-            &lt;p&gt;
-                THE SOFTWARE IS PROVIDED AS IS, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-            &lt;/p&gt;
-        &lt;/div&gt;
-        &lt;div&gt;
-            &lt;h2&gt;IX. App Center by Microsoft&lt;/h2&gt;
-              &lt;p&gt;
-                Copyright (c) Microsoft Corporation. All rights reserved.
-            &lt;/p&gt;
-            &lt;p&gt;
-                Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
-            &lt;/p&gt;
-            &lt;p&gt;
-                The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-            &lt;/p&gt;
-            &lt;p&gt;
-                THE SOFTWARE IS PROVIDED AS IS, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-            &lt;/p&gt;
-        &lt;/div&gt;
-    &lt;/body&gt;
-&lt;/html&gt;</value>
-  </data>
   <data name="DarkTheme" xml:space="preserve">
     <value>Donker</value>
   </data>
@@ -352,33 +209,6 @@
   </data>
   <data name="Privacy" xml:space="preserve">
     <value>Privacy</value>
-  </data>
-  <data name="PrivacyStatement" xml:space="preserve">
-    <value>&lt;html&gt;
-    &lt;head&gt;
-        &lt;style&gt;
-            body {
-                font-family: "Calibri","sans-serif";
-                font-size: 14px;
-            }
-        &lt;/style&gt;
-    &lt;/head&gt;
-&lt;body&gt;
-&lt;h1&gt;Top 2000 App Privacy Verklaring&lt;/h1&gt;
-&lt;p&gt;Uw privacy is belangrijk. In dit privacy statement wordt u op de hoogte gehouden hoe de applicatie gegevens verwerkt en waarom. Wanneer u gebruikt maakt van de app gaat u akkoord met dit privacy statement.&lt;/p&gt;
-&lt;h3&gt;Welke gegevens worden verzameld&lt;/h3&gt;
-&lt;p&gt;Voor een betere gebruikerservaring worden er gegevens van u verzameld. Voorbeelden van gegevens die verzameld kunnen worden zijn: Toestelinformatie, providers, locatie, crash reporten. Deze gegevens worden gebruikt om het product te verbeteren en om tot inzicht te komen van het gebruik. Deze gegevens worden niet doorverkocht.&lt;/p&gt;
-&lt;p&gt;De app maakt gebruik van diensten van derden welke gegevens van u verzameld. Deze diensten worden hieronder vermeld:&lt;/p&gt;
-&lt;ul&gt;
-    &lt;li&gt;&lt;a href="https://privacy.microsoft.com/nl-nl/privacystatement"&gt;https://privacy.microsoft.com/nl-nl/privacystatement&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href="https://policies.google.com/privacy?hl=nl"&gt;https://policies.google.com/privacy?hl=nl&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3&gt;Wijzigingen van dit privacy statement&lt;/h3&gt;
-&lt;p&gt;Dit privacy statement kan van tijd tot tijd wijzigen. Ik raad u daarom aan om deze pagina regelmatig te controleren op wijzigingen. Een wijziging is van kracht vanaf het moment dat deze op de pagina is gepubliceerd.&lt;/p&gt;
-&lt;h3&gt;Contactgegevens&lt;/h3&gt;
-&lt;p&gt;U kunt contact met mij opnemen via &lt;a href="mailto:rick@nl"&gt;rick@nl&lt;/a&gt;&lt;/p&gt;
-&lt;/body&gt;
-&lt;/html&gt;</value>
   </data>
   <data name="RateIt" xml:space="preserve">
     <value>Ja!</value>
@@ -494,5 +324,8 @@
   </data>
   <data name="Youtube" xml:space="preserve">
     <value>Open YouTube</value>
+  </data>
+  <data name="SelectYear" xml:space="preserve">
+    <value>Selecteer een editie</value>
   </data>
 </root>

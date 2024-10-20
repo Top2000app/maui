@@ -41,6 +41,14 @@ public partial class ViewModel : ObservableObject
         await this.LoadAllListingsAsync();
     }
 
+    public async Task InitialiseViewModelAsync(Edition newEdition)
+    {
+        this.SelectedEdition = newEdition;
+        this.SelectedEditionYear = this.SelectedEdition.Year;
+
+        await this.LoadAllListingsAsync();
+    }
+
     public async Task LoadAllListingsAsync()
     {
         if (this.SelectedEdition is null)

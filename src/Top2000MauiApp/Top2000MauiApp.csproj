@@ -104,12 +104,6 @@
 	  <MauiXaml Update="Pages\Settings\General.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Pages\Settings\Privacy.xaml">
-	    <Generator>MSBuild:Compile</Generator>
-	  </MauiXaml>
-	  <MauiXaml Update="Pages\Settings\ThirdParty.xaml">
-	    <Generator>MSBuild:Compile</Generator>
-	  </MauiXaml>
 	  <MauiXaml Update="Themes\Dark.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>

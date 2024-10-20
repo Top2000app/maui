@@ -38,10 +38,6 @@
             </Tab.Icon>
             <ShellContent x:Name="GeneralTab" Title="{Binding [General], Source={x:Static res:Translator.Instance}}"
                           ContentTemplate="{DataTemplate settings:General}" />
-            <ShellContent x:Name="PrivacyTab" Title="{Binding [Privacy], Source={x:Static res:Translator.Instance}}"
-                          ContentTemplate="{DataTemplate settings:Privacy}" />
-            <ShellContent x:Name="ThirdPartyTab" Title="{Binding [ThirdParty], Source={x:Static res:Translator.Instance}}"
-                          ContentTemplate="{DataTemplate settings:ThirdParty}" />
             <ShellContent x:Name="AboutTab" Title="{Binding [About], Source={x:Static res:Translator.Instance}}"
                           ContentTemplate="{DataTemplate settings:About}" />
         </Tab>

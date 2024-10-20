@@ -111,7 +111,7 @@
                                TextColor="{StaticResource Top2000Colour}"
                                Style="{StaticResource MediumLabelStyle}"
                                Margin="20,5,0,0" />
-                            <BoxView Style="{StaticResource Separator}" Margin="20,-3,20,5" />
+                            <BoxView Style="{StaticResource Separator}" Margin="20, 0,20,5" />
                             <StackLayout.GestureRecognizers>
                                 <TapGestureRecognizer Tapped="OnJumpGroupButtonClick" />
                             </StackLayout.GestureRecognizers>
