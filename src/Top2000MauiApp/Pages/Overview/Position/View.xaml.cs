@@ -60,28 +60,6 @@ public partial class View : ContentPage
         listings.ScrollTo(group.First(), position: ScrollToPosition.Center, animate: false);
     }
 
-    //private async void NewEditionSelected(object sender, SelectionChangedEventArgs e)
-    //{
-    //    if (AllEditions.SelectedItem is Edition edition)
-    //    {
-    //        this.ViewModel.SelectedEdition = edition;
-    //        this.ViewModel.SelectedEditionYear = edition.Year;
-
-    //        var loadingTask = this.ViewModel.LoadAllListingsAsync();
-
-    //        Shell.SetTabBarIsVisible(this, true);
-    //        Shell.SetNavBarIsVisible(this, true);
-    //        await EditionsFlyout.TranslateTo(this.Width * -1, 0);
-    //        EditionsFlyout.IsVisible = false;
-
-    //        await loadingTask;
-
-    //        this.JumpIntoList(this.ViewModel.Listings[0].Key);
-
-    //        AllEditions.SelectedItem = null;
-    //    }
-    //}
-
     private async void OnListingSelected(object sender, SelectionChangedEventArgs e)
     {
         if (this.ViewModel.SelectedListing is null || trackInformation.IsVisible)
@@ -124,23 +102,10 @@ public partial class View : ContentPage
             {
                 var edition = editions.Single(x => x.Year == newYear);
                 await ViewModel.InitialiseViewModelAsync(edition);
+
+                this.JumpIntoList(this.ViewModel.Listings[0].Key);
             }
         }
     }
 }
 
-public static class PageExtensions
-{
-    public static async Task<DisplayActionSheetResult> DisplayActionSheetAsync(this ContentPage page, string title, string cancel, params string[] options)
-    {
-        var result = await page.DisplayActionSheet(title, cancel, destruction: null, options);
-
-        return new DisplayActionSheetResult
-        (
-            IsValid: result is not null && !result.Equals(cancel),
-            SelectedOption: result ?? string.Empty
-        );
-    }
-}
-
-public readonly record struct DisplayActionSheetResult(bool IsValid, string SelectedOption);

@@ -115,8 +115,6 @@
                 </CollectionView.GroupHeaderTemplate>
             </CollectionView>
 
-            <trackInformation:View x:Name="trackInformation" IsVisible="False" />
-
             <AbsoluteLayout>
                 <Button Style="{DynamicResource ActionButtonWithShadow}" Text="{x:Static g:Symbols.Menu}"
                         Clicked="MenuButtonClicked" IsVisible="{DynamicResource IsLight}"
@@ -131,6 +129,8 @@
                       AbsoluteLayout.LayoutFlags="PositionProportional"  AbsoluteLayout.LayoutBounds=".95,.95,80,40">
                 </Button>
             </AbsoluteLayout>
+
+            <trackInformation:View x:Name="trackInformation" IsVisible="False" />
         </Grid>
     </ContentPage.Content>
 </ContentPage>
