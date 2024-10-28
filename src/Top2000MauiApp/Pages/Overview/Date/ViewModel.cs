@@ -15,7 +15,7 @@ public partial class ViewModel : ObservableObject
         this.Dates = [];
     }
 
-    public ObservableGroupedList<DateTime, TrackListing> Listings { get; }
+    public ObservableGroupedList<DateTime, TrackListingViewModel> Listings { get; }
 
     public ObservableGroupedList<DateTime, DateTime> Dates { get; }
 
@@ -23,9 +23,8 @@ public partial class ViewModel : ObservableObject
     public int selectedEditionYear;
 
     [ObservableProperty]
-    public TrackListing? selectedListing;
+    public TrackListingViewModel? selectedListing;
 
-    public static DateTime LocalPlayDateAndTime(TrackListing listing) => listing.PlayUtcDateAndTime.ToLocalTime();
 
     public async Task InitialiseViewModelAsync()
     {
@@ -40,8 +39,21 @@ public partial class ViewModel : ObservableObject
         var tracks = await mediator.Send(new AllListingsOfEditionRequest { Year = this.SelectedEditionYear });
 
         var listings = tracks
+             .Select(x => new TrackListingViewModel
+             {
+                 TrackId = x.TrackId,
+                 Artist = x.Artist,
+                 Title = x.Title,
+                 Delta = TrackListingViewModel.ConvertDeltaToString(x),
+                 DeltaFontSize = TrackListingViewModel.ConvertDeltaFontSize(x),
+                 PositionString = x.Position.ToString(),
+                 Position = x.Position,
+                 DeltaSymbol = TrackListingViewModel.ConvertDeltaToSymbol(x),
+                 DeltaSymbolColour = TrackListingViewModel.ConvertDeltaSymbolColour(x),
+                 LocalPlayDateTime = x.PlayUtcDateAndTime.ToLocalTime()
+             })
             .OrderByDescending(x => x.Position)
-            .GroupBy(LocalPlayDateAndTime);
+            .GroupBy(x => x.LocalPlayDateTime);
 
         var dates = listings
             .Select(x => x.Key)

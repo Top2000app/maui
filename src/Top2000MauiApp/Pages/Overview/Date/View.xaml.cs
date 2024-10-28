@@ -1,4 +1,6 @@
-﻿namespace Top2000MauiApp.Pages.Overview.Date;
+﻿using static Top2000MauiApp.MauiProgram;
+
+namespace Top2000MauiApp.Pages.Overview.Date;
 
 [XamlCompilation(XamlCompilationOptions.Compile)]
 public partial class View : ContentPage
@@ -47,13 +49,9 @@ public partial class View : ContentPage
 
     private void JumpWhenTop2000IsOn()
     {
-        var first = this.ViewModel.Listings[0].Key;
-        var last = this.ViewModel.Listings[0].Key;
-        var current = DateTime.Now;
-
-        if (current > first && current < last)
+        if (Top2000Info.IsLive())
         {
-            this.JumpToSelectedDateTime(current);
+            this.JumpToSelectedDateTime(DateTime.Now);
         }
         else
         {

@@ -1,4 +1,7 @@
-﻿using Microsoft.Extensions.Logging;
+﻿#if DEBUG
+using Microsoft.Extensions.Logging;
+#endif
+
 using Top2000.Data.ClientDatabase;
 using Top2000.Features.SQLite;
 using Top2000MauiApp.Globalisation;
@@ -7,7 +10,7 @@ using Top2000MauiApp.Themes;
 
 namespace Top2000MauiApp;
 
-public static class MauiProgram
+public static partial class MauiProgram
 {
     public static MauiApp CreateMauiApp()
     {
@@ -43,7 +46,7 @@ public static class MauiProgram
             .AddSingleton<ICulture>(new SupportedCulture("fr"))
         ;
 
-        if (IsTop2000Live())
+        if (Top2000Info.IsLive())
         {
             builder.Services.AddSingleton<IMainShell, Top2000MauiApp.Pages.NavigationShell.LiveTop2000.View>();
         }
@@ -59,17 +62,6 @@ public static class MauiProgram
         App.ServiceProvider = serviceProvider.Services;
         App.EnsureDatabaseIsCreatedAsync().GetAwaiter().GetResult();
 
-
         return serviceProvider;
-    }
-
-    private static bool IsTop2000Live()
-    {
-        var current = DateTime.UtcNow;
-
-        var first = new DateTime(current.Year, 12, 24, 23, 0, 0, DateTimeKind.Utc); // first day of Christmas for CET in UTC time
-        var last = new DateTime(current.Year, 12, 31, 23, 0, 0, DateTimeKind.Utc); // new year for CET in UTC time
-
-        return current > first && current < last;
     }
 }

@@ -15,10 +15,10 @@ public partial class ViewModel : ObservableObject
         this.Editions = [];
     }
 
-    public ObservableGroupedList<string, TrackListing> Listings { get; }
+    public ObservableGroupedList<string, TrackListingViewModel> Listings { get; }
 
     [ObservableProperty]
-    public TrackListing? selectedListing;
+    public TrackListingViewModel? selectedListing;
 
     public ObservableList<Edition> Editions { get; }
 
@@ -56,10 +56,52 @@ public partial class ViewModel : ObservableObject
             return;
         }
 
-        var listings = await mediator.Send(new AllListingsOfEditionRequest { Year = this.SelectedEdition.Year });
-        this.CountOfItems = listings.Count;
-        this.Listings.ClearAddRange(listings.GroupByPosition());
+        var result = await mediator.Send(new AllListingsOfEditionRequest { Year = this.SelectedEdition.Year });
+
+        var listings = result
+            .Select(x => new TrackListingViewModel
+            {
+                TrackId = x.TrackId,
+                Artist = x.Artist,
+                Title = x.Title,
+                Delta = TrackListingViewModel.ConvertDeltaToString(x),
+                DeltaFontSize = TrackListingViewModel.ConvertDeltaFontSize(x),
+                PositionString = x.Position.ToString(),
+                Position = x.Position,
+                DeltaSymbol = TrackListingViewModel.ConvertDeltaToSymbol(x),
+                DeltaSymbolColour = TrackListingViewModel.ConvertDeltaSymbolColour(x),
+                LocalPlayDateTime = x.PlayUtcDateAndTime.ToLocalTime()
+            })
+            .GroupBy(x => Position(x, result.Count))
+            .ToList();
+
+        this.CountOfItems = result.Count;
+        this.Listings.ClearAddRange(listings);
 
         this.SelectedListing = null;
+    }
+
+    private static string Position(TrackListingViewModel listing, int countOfItems)
+    {
+        if (listing.Position < 100)
+        {
+            return "1 - 100";
+        }
+
+        if (countOfItems > 2000)
+        {
+            if (listing.Position >= 2400)
+            {
+                return "2400 - 2500";
+            }
+        }
+        else if (listing.Position >= 1900)
+        {
+            return "1900 - 2000";
+        }
+
+        int num = listing.Position / 100 * 100;
+        int value = num + 100;
+        return $"{num} - {value}";
     }
 }

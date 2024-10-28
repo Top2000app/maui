@@ -9,14 +9,9 @@
              BackgroundColor="{DynamicResource PageBackgroundColor}">
     <ContentPage.Resources>
         <ResourceDictionary>
-            <overview:EditionPlayTimeConverter x:Key="EditionPlayTimeConverter" />
             <local:DateTimeKeyToString x:Key="DateTimeKeyToString" />
             <local:DateTimeToDateOnlyString x:Key="DateTimeToDateOnlyString" />
             <local:DateTimeToTimeOnlyString x:Key="DateTimeToTimeOnlyString" />
-            <overview:DeltaToStringConverter x:Key="DeltaToStringConverter" />
-            <overview:DeltaToSymbolColour x:Key="DeltaToSymbolColour" />
-            <overview:DeltaToSymbolConverter x:Key="DeltaToSymbolConverter" />
-            <overview:TrackListingSymbolFontSizeConverter x:Key="TrackListingSymbolFontSizeConverter" />
 
             <Style TargetType="Grid">
                 <Setter Property="VisualStateManager.VisualStateGroups">
@@ -81,20 +76,21 @@
 
                             <StackLayout Grid.Row="0" Grid.Column="0" Grid.RowSpan="2" Spacing="0">
 
-                                <Label Text="{Binding Position}" Style="{StaticResource MediumLabelStyle}" Margin="20,0,0,0" />
+                                <Label Text="{Binding PositionString}" Style="{StaticResource MediumLabelStyle}" Margin="20,0,0,0" />
 
                                 <Grid Margin="20,0,0,0">
 
-                                    <Label Margin="13,0,0,0" Style="{StaticResource SmallLabelStyle}"
-                                    FontSize="{Binding Converter={StaticResource TrackListingSymbolFontSizeConverter}}"
-                                   Text="{Binding Delta, Converter={StaticResource DeltaToStringConverter}}"
-                                   TextColor="{Binding Converter={StaticResource DeltaToSymbolColour}}" />
+                                    <Label Margin="13,0,0,0" 
+                                           Style="{StaticResource SmallLabelStyle}"
+                                           FontSize="{Binding DeltaFontSize}"
+                                           Text="{Binding Delta}"
+                                           TextColor="{Binding DeltaSymbolColour}" />
 
                                     <Label Style="{StaticResource SmallLabelStyle}"
-                                    FontSize="{Binding Converter={StaticResource TrackListingSymbolFontSizeConverter}}"
-                                   FontFamily="{OnPlatform Android=MaterialIcons}"
-                                   Text="{Binding Converter={StaticResource DeltaToSymbolConverter}}"
-                                   TextColor="{Binding Converter={StaticResource DeltaToSymbolColour}}" />
+                                           FontSize="{Binding DeltaFontSize}"
+                                           FontFamily="{OnPlatform Android=MaterialIcons}"
+                                           Text="{Binding DeltaSymbol}"
+                                           TextColor="{Binding DeltaSymbolColour}" />
                                 </Grid>
                             </StackLayout>
 
