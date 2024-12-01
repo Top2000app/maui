@@ -2,7 +2,6 @@
 using Microsoft.Extensions.Logging;
 #endif
 
-using Top2000.Data.ClientDatabase;
 using Top2000.Features.SQLite;
 using Top2000MauiApp.Globalisation;
 using Top2000MauiApp.Pages.NavigationShell;
@@ -32,8 +31,10 @@ public static partial class MauiProgram
 #endif
 
         builder.Services
-            .AddClientDatabase(new DirectoryInfo(FileSystem.Current.AppDataDirectory))
-            .AddFeaturesWithSQLite()
+            .AddTop2000Features(builder =>
+            {
+                builder.DatabaseDirectory(FileSystem.Current.AppDataDirectory);
+            })
             .AddSingleton<IThemeService, ThemeService>()
             .AddTransient<Pages.Overview.Position.ViewModel>()
             .AddTransient<Pages.Overview.Date.ViewModel>()
