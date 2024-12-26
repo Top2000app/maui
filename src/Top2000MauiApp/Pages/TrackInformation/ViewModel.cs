@@ -99,7 +99,7 @@ public partial class ViewModel : ObservableObject
         this.TotalTop2000Percentage = 100 * this.Appearances / this.Listings.Count;
 
         this.TotalListings = this.Listings.Count;
-        this.LocalUtcDateAndTime = ConvertToLocalTime(track.Latest.PlayUtcDateAndTime);
+        this.LocalUtcDateAndTime = ConvertToLocalTime(track.Latest.PlayUtcDateAndTime?.ToLocalTime());
     }
 
     public static string ConvertPosition(int? value)
@@ -141,7 +141,7 @@ public partial class ViewModel : ObservableObject
         {
             return string.Empty;
         }
-
+        
         var hour = value.Value.TimeOfDay.Hours;
         var untilHour = hour + 1;
 
