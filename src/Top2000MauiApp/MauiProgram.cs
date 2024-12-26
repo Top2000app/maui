@@ -34,6 +34,7 @@ public static partial class MauiProgram
             .AddTop2000Features(builder =>
             {
                 builder.DatabaseDirectory(FileSystem.Current.AppDataDirectory);
+                builder.EnableOnlineUpdates();
             })
             .AddSingleton<IThemeService, ThemeService>()
             .AddTransient<Pages.Overview.Position.ViewModel>()
